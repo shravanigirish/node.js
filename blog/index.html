@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js Learning Hub - Master Node.js Development | Free Tutorials</title>
+    <meta name="description" content="Learn Node.js development with comprehensive free tutorials, guides, and examples. From beginner to advanced topics including Express, MongoDB, REST APIs, and more.">
+    <meta name="keywords" content="Node.js, Node.js tutorial, JavaScript, backend development, Express.js, MongoDB, web development, programming, free tutorials">
+    <meta name="author" content="Node.js Learning Hub">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Node.js Learning Hub - Master Node.js Development">
+    <meta property="og:description" content="Learn Node.js development with comprehensive free tutorials and guides">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nodejslearninghub.com">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nodejslearninghub.com">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">Node.js Hub</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Node.js tutorials..." aria-label="Search">
+                <button type="button" aria-label="Search">Search</button>
+            </div>
+            <div id="search-results"></div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">Menu</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Master Node.js Development</h1>
+                <p>Learn Node.js from scratch with comprehensive tutorials, hands-on examples, and expert guidance. Start your journey to becoming a Node.js expert today.</p>
+                <a href="courses.html" class="cta-button">Start Learning Now</a>
+            </div>
+        </section>
+
+        <section class="container mt-3">
+            <h2 class="text-center mb-2">Featured Node.js Course</h2>
+            <div class="course-grid">
+                <div class="course-card">
+                    <img src="images/nodejs-course.svg" alt="Node.js Fundamentals Course">
+                    <div class="course-card-content">
+                        <h3>Node.js Fundamentals - Complete Course</h3>
+                        <div class="meta">Beginner | 8 hours | 5 modules</div>
+                        <p>Start your Node.js journey from scratch. Learn the basics of Node.js, including setup, core concepts, and your first server. Perfect for absolute beginners.</p>
+                        <div class="price">FREE</div>
+                        <button class="btn btn-success" onclick="enrollCourse('Node.js Fundamentals')">Enroll Now</button>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <img src="images/express-course.svg" alt="Express.js Masterclass">
+                    <div class="course-card-content">
+                        <h3>Express.js Web Development</h3>
+                        <div class="meta">Intermediate | 12 hours | 8 modules</div>
+                        <p>Master Express.js framework and build robust web applications. Learn routing, middleware, templating, and REST API development.</p>
+                        <div class="price">FREE</div>
+                        <button class="btn btn-success" onclick="enrollCourse('Express.js Web Development')">Enroll Now</button>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <img src="images/microservices-course.svg" alt="Advanced Node.js & Microservices Course">
+                    <div class="course-card-content">
+                        <h3>Advanced Node.js & Microservices</h3>
+                        <div class="meta">Advanced | 15 hours | 10 modules</div>
+                        <p>Take your Node.js skills to the next level. Learn microservices architecture, performance optimization, and deployment strategies.</p>
+                        <div class="price">FREE</div>
+                        <button class="btn btn-success" onclick="enrollCourse('Advanced Node.js & Microservices')">Enroll Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container mt-3">
+            <h2 class="text-center mb-2">Latest Blog Posts</h2>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <img src="images/nodejs-course.svg" alt="Node.js Basics Tutorial">
+                    <div class="blog-card-content">
+                        <h3><a href="blog/nodejs-basics.html">Node.js Basics: Getting Started Guide</a></h3>
+                        <div class="excerpt">Learn the fundamentals of Node.js development. This comprehensive guide covers installation, basic concepts, and your first Node.js application.</div>
+                        <div class="meta">Beginner | 8 min read</div>
+                        <a href="blog/nodejs-basics.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <img src="images/express-course.svg" alt="Express.js Tutorial">
+                    <div class="blog-card-content">
+                        <h3><a href="blog/express-tutorial.html">Express.js Tutorial for Beginners</a></h3>
+                        <div class="excerpt">Learn to build web applications with Express.js. This tutorial covers routing, middleware, templates, and building REST APIs.</div>
+                        <div class="meta">Intermediate | 12 min read</div>
+                        <a href="blog/express-tutorial.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <img src="images/mongodb-course.svg" alt="MongoDB with Node.js">
+                    <div class="blog-card-content">
+                        <h3><a href="blog/mongodb-nodejs.html">MongoDB with Node.js Complete Guide</a></h3>
+                        <div class="excerpt">Master database integration with MongoDB and Node.js. Learn Mongoose ODM, data modeling, and CRUD operations.</div>
+                        <div class="meta">Intermediate | 15 min read</div>
+                        <a href="blog/mongodb-nodejs.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="container mt-3">
+            <div class="card">
+                <h2 class="text-center mb-2">Why Learn Node.js?</h2>
+                <div class="course-grid">
+                    <div class="card">
+                        <h3>High Performance</h3>
+                        <p>Node.js uses the V8 engine and event-driven architecture for exceptional performance and scalability, making it perfect for real-time applications.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Full-Stack JavaScript</h3>
+                        <p>Use JavaScript for both frontend and backend development with Node.js. Streamline your development process and codebase.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Huge Ecosystem</h3>
+                        <p>Access to npm, the largest package registry with millions of packages. Find solutions for virtually any problem you encounter.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Community Support</h3>
+                        <p>Large, active community providing endless resources, tutorials, and support. Never get stuck on a problem for long.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container mt-3">
+            <div class="card text-center">
+                <h2>Ready to Start Your Node.js Journey?</h2>
+                <p>Join thousands of developers who have mastered Node.js with our comprehensive tutorials and courses.</p>
+                <a href="courses.html" class="btn btn-primary">Browse All Courses</a>
+                <a href="blog.html" class="btn btn-outline">Read Our Blog</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Node.js Hub</h4>
+                    <p>Your comprehensive resource for learning Node.js development, from basics to advanced concepts. All tutorials are completely free.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="courses.html">All Courses</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Popular Topics</h4>
+                    <ul>
+                        <li><a href="blog/nodejs-basics.html">Node.js Basics</a></li>
+                        <li><a href="blog/express-tutorial.html">Express.js Tutorial</a></li>
+                        <li><a href="blog/mongodb-nodejs.html">MongoDB Guide</a></li>
+                        <li><a href="blog/rest-api-nodejs.html">REST API Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Node.js Learning Hub. All rights reserved. | Free tutorials for everyone</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Enrollment Modal -->
+    <div id="enrollmentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Enroll in Course</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="enrollmentForm">
+                    <div class="form-group">
+                        <label for="courseName">Course:</label>
+                        <input type="text" id="courseName" name="courseName" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="experience">Experience Level *</label>
+                        <select id="experience" name="experience" required>
+                            <option value="">Select your experience</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="goals">Learning Goals</label>
+                        <textarea id="goals" name="goals" rows="3" placeholder="Tell us what you hope to achieve with this course..."></textarea>
+                    </div>
+                    <div class="form-group checkbox">
+                        <input type="checkbox" id="newsletter" name="newsletter">
+                        <label for="newsletter">Send me course updates and learning resources</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" id="cancelEnrollment">Cancel</button>
+                <button type="submit" form="enrollmentForm" class="btn btn-success">Complete Enrollment</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Node.js Learning Hub",
+        "description": "Learn Node.js development with comprehensive tutorials and courses",
+        "url": "https://nodejslearninghub.com",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://nodejslearninghub.com/blog?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+</body>
+</html>
