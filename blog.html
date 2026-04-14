@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js Blog - Latest Free Tutorials & Best Practices | Node.js Learning Hub</title>
+    <meta name="description" content="Stay updated with the latest Node.js tutorials, best practices, and tips. Learn from expert developers and enhance your Node.js skills with our comprehensive blog.">
+    <meta name="keywords" content="Node.js blog, Node.js tutorials, JavaScript tips, backend development, Express.js, MongoDB, free tutorials">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nodejslearninghub.com/blog">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">Node.js Hub</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Node.js tutorials..." aria-label="Search">
+                <button type="button" aria-label="Search">Search</button>
+            </div>
+            <div id="search-results"></div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">Menu</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <div class="container">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><span>Blog</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <section class="container">
+            <div class="card">
+                <h1>Node.js Blog</h1>
+                <p class="lead">Discover the latest Node.js tutorials, best practices, and insights from our expert instructors. Stay ahead in your Node.js journey with our comprehensive blog posts.</p>
+                
+                <!-- Blog Categories -->
+                <div class="blog-categories mb-2">
+                    <button class="btn btn-primary category-btn active" data-category="all">All Posts</button>
+                    <button class="btn btn-outline category-btn" data-category="basics">Basics</button>
+                    <button class="btn btn-outline category-btn" data-category="framework">Framework</button>
+                    <button class="btn btn-outline category-btn" data-category="database">Database</button>
+                    <button class="btn btn-outline category-btn" data-category="advanced">Advanced</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="blog-grid" id="blog-container">
+                <article class="blog-card" data-category="basics">
+                    <img src="images/nodejs-course.svg" alt="Node.js Basics Tutorial">
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span class="category">Basics</span>
+                            <span class="reading-time">8 min read</span>
+                        </div>
+                        <h3><a href="blog/nodejs-basics.html">Node.js Basics: Getting Started Guide</a></h3>
+                        <div class="excerpt">Learn the fundamentals of Node.js development. This comprehensive guide covers installation, basic concepts, and your first Node.js application.</div>
+                        <div class="blog-footer">
+                            <span class="author">Node.js Expert</span>
+                            <span class="views">1,520 views</span>
+                        </div>
+                        <a href="blog/nodejs-basics.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="framework">
+                    <img src="images/express-course.svg" alt="Express.js Tutorial">
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span class="category">Framework</span>
+                            <span class="reading-time">12 min read</span>
+                        </div>
+                        <h3><a href="blog/express-tutorial.html">Express.js Tutorial for Beginners</a></h3>
+                        <div class="excerpt">Learn to build web applications with Express.js. This tutorial covers routing, middleware, templates, and building REST APIs.</div>
+                        <div class="blog-footer">
+                            <span class="author">Express Expert</span>
+                            <span class="views">1,280 views</span>
+                        </div>
+                        <a href="blog/express-tutorial.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="database">
+                    <img src="images/mongodb-course.svg" alt="MongoDB with Node.js">
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span class="category">Database</span>
+                            <span class="reading-time">15 min read</span>
+                        </div>
+                        <h3><a href="blog/mongodb-nodejs.html">MongoDB with Node.js Complete Guide</a></h3>
+                        <div class="excerpt">Master database integration with MongoDB and Node.js. Learn Mongoose ODM, data modeling, and CRUD operations.</div>
+                        <div class="blog-footer">
+                            <span class="author">Database Expert</span>
+                            <span class="views">980 views</span>
+                        </div>
+                        <a href="blog/mongodb-nodejs.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="advanced">
+                    <img src="images/rest-api-course.svg" alt="REST API Development">
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span class="category">Advanced</span>
+                            <span class="reading-time">18 min read</span>
+                        </div>
+                        <h3><a href="blog/rest-api-nodejs.html">Building REST APIs with Node.js</a></h3>
+                        <div class="excerpt">Build robust REST APIs using Node.js and Express. Learn REST principles, API design best practices, and implementation.</div>
+                        <div class="blog-footer">
+                            <span class="author">API Expert</span>
+                            <span class="views">1,120 views</span>
+                        </div>
+                        <a href="blog/rest-api-nodejs.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="advanced">
+                    <img src="images/nodejs-course.svg" alt="Node.js Event Loop">
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span class="category">Advanced</span>
+                            <span class="reading-time">10 min read</span>
+                        </div>
+                        <h3><a href="blog/event-loop.html">Understanding the Node.js Event Loop</a></h3>
+                        <div class="excerpt">Deep dive into the Node.js event loop. Understand how Node.js handles asynchronous operations and achieves high performance.</div>
+                        <div class="blog-footer">
+                            <span class="author">Node.js Expert</span>
+                            <span class="views">890 views</span>
+                        </div>
+                        <a href="blog/event-loop.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="basics">
+                    <img src="images/express-course.svg" alt="Node.js Modules">
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span class="category">Basics</span>
+                            <span class="reading-time">12 min read</span>
+                        </div>
+                        <h3><a href="blog/nodejs-modules.html">Node.js Modules: Understanding CommonJS and ES Modules</a></h3>
+                        <div class="excerpt">Complete guide to Node.js modules. Learn about CommonJS, ES modules, module creation, and best practices for modular development.</div>
+                        <div class="blog-footer">
+                            <span class="author">Module Expert</span>
+                            <span class="views">750 views</span>
+                        </div>
+                        <a href="blog/nodejs-modules.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="advanced">
+                    <img src="images/nodejs-course.svg" alt="Asynchronous Programming in Node.js">
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span class="category">Advanced</span>
+                            <span class="reading-time">19 min read</span>
+                        </div>
+                        <h3><a href="blog/async-programming.html">Asynchronous Programming in Node.js: Promises, Async/Await</a></h3>
+                        <div class="excerpt">Master asynchronous programming in Node.js. Learn about callbacks, promises, async/await, and handling complex async operations.</div>
+                        <div class="blog-footer">
+                            <span class="author">Async Expert</span>
+                            <span class="views">1,180 views</span>
+                        </div>
+                        <a href="blog/async-programming.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="basics">
+                    <img src="images/mongodb-course.svg" alt="File System Operations">
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span class="category">Basics</span>
+                            <span class="reading-time">16 min read</span>
+                        </div>
+                        <h3><a href="blog/file-system.html">File System Operations in Node.js</a></h3>
+                        <div class="excerpt">Learn file system operations in Node.js. Cover reading, writing, file streams, directory operations, and best practices for file handling.</div>
+                        <div class="blog-footer">
+                            <span class="author">File System Expert</span>
+                            <span class="views">920 views</span>
+                        </div>
+                        <a href="blog/file-system.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="advanced">
+                    <img src="images/security-course.svg" alt="Error Handling">
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span class="category">Advanced</span>
+                            <span class="reading-time">21 min read</span>
+                        </div>
+                        <h3><a href="blog/error-handling.html">Error Handling in Node.js: Best Practices and Patterns</a></h3>
+                        <div class="excerpt">Master error handling in Node.js applications. Learn about error types, handling patterns, middleware, and building robust error management.</div>
+                        <div class="blog-footer">
+                            <span class="author">Error Expert</span>
+                            <span class="views">1,560 views</span>
+                        </div>
+                        <a href="blog/error-handling.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="advanced">
+                    <img src="images/security-course.svg" alt="Node.js Security">
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span class="category">Advanced</span>
+                            <span class="reading-time">18 min read</span>
+                        </div>
+                        <h3><a href="blog/security.html">Node.js Security Best Practices</a></h3>
+                        <div class="excerpt">Secure your Node.js applications with these essential security practices. Learn about authentication, data validation, and common vulnerabilities.</div>
+                        <div class="blog-footer">
+                            <span class="author">Security Expert</span>
+                            <span class="views">1,450 views</span>
+                        </div>
+                        <a href="blog/security.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="advanced">
+                    <img src="images/nodejs-course.svg" alt="Testing Node.js Applications">
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span class="category">Advanced</span>
+                            <span class="reading-time">16 min read</span>
+                        </div>
+                        <h3><a href="blog/testing-nodejs.html">Testing Node.js Applications: Jest and Mocha</a></h3>
+                        <div class="excerpt">Complete guide to testing Node.js applications. Learn about unit testing, integration testing, and frameworks like Jest and Mocha.</div>
+                        <div class="blog-footer">
+                            <span class="author">Testing Expert</span>
+                            <span class="views">980 views</span>
+                        </div>
+                        <a href="blog/testing-nodejs.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="advanced">
+                    <img src="images/nodejs-course.svg" alt="Node.js Performance Optimization">
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span class="category">Advanced</span>
+                            <span class="reading-time">15 min read</span>
+                        </div>
+                        <h3><a href="blog/performance.html">Node.js Performance Optimization Techniques</a></h3>
+                        <div class="excerpt">Optimize your Node.js applications for better performance. Learn about clustering, caching, memory management, and profiling.</div>
+                        <div class="blog-footer">
+                            <span class="author">Performance Expert</span>
+                            <span class="views">1,120 views</span>
+                        </div>
+                        <a href="blog/performance.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="advanced">
+                    <img src="images/nodejs-course.svg" alt="Debugging Node.js Applications">
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span class="category">Advanced</span>
+                            <span class="reading-time">17 min read</span>
+                        </div>
+                        <h3><a href="blog/debugging.html">Debugging Node.js Applications: Tools and Techniques</a></h3>
+                        <div class="excerpt">Master Node.js debugging with these essential tools and techniques. Learn about Chrome DevTools, VS Code debugger, and debugging best practices.</div>
+                        <div class="blog-footer">
+                            <span class="author">Debugging Expert</span>
+                            <span class="views">760 views</span>
+                        </div>
+                        <a href="blog/debugging.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="advanced">
+                    <img src="images/nodejs-course.svg" alt="Node.js Best Practices for Production">
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span class="category">Advanced</span>
+                            <span class="reading-time">22 min read</span>
+                        </div>
+                        <h3><a href="blog/best-practices.html">Node.js Best Practices for Production Applications</a></h3>
+                        <div class="excerpt">Learn essential Node.js best practices for building production-ready applications. Covering code structure, error handling, security, and performance.</div>
+                        <div class="blog-footer">
+                            <span class="author">Best Practices Expert</span>
+                            <span class="views">1,320 views</span>
+                        </div>
+                        <a href="blog/best-practices.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="advanced">
+                    <img src="images/microservices-course.svg" alt="WebSockets with Node.js">
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span class="category">Advanced</span>
+                            <span class="reading-time">23 min read</span>
+                        </div>
+                        <h3><a href="blog/websockets.html">Real-time Applications with Node.js and WebSockets</a></h3>
+                        <div class="excerpt">Build real-time applications with Node.js and WebSockets. Learn about Socket.IO, real-time communication patterns, and building chat apps.</div>
+                        <div class="blog-footer">
+                            <span class="author">WebSocket Expert</span>
+                            <span class="views">1,340 views</span>
+                        </div>
+                        <a href="blog/websockets.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="framework">
+                    <img src="images/express-course.svg" alt="Node.js Middleware">
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span class="category">Framework</span>
+                            <span class="reading-time">11 min read</span>
+                        </div>
+                        <h3><a href="blog/middleware.html">Building Custom Middleware in Express.js</a></h3>
+                        <div class="excerpt">Learn to create custom middleware in Express.js. Understand middleware types, error handling, and best practices for middleware development.</div>
+                        <div class="blog-footer">
+                            <span class="author">Middleware Expert</span>
+                            <span class="views">890 views</span>
+                        </div>
+                        <a href="blog/middleware.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="advanced">
+                    <img src="images/express-course.svg" alt="Node.js Streams">
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span class="category">Advanced</span>
+                            <span class="reading-time">14 min read</span>
+                        </div>
+                        <h3><a href="blog/streams.html">Working with Streams in Node.js</a></h3>
+                        <div class="excerpt">Master Node.js streams for efficient data processing. Learn about readable, writable, duplex, and transform streams.</div>
+                        <div class="blog-footer">
+                            <span class="author">Streams Expert</span>
+                            <span class="views">620 views</span>
+                        </div>
+                        <a href="blog/streams.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="advanced">
+                    <img src="images/microservices-course.svg" alt="Node.js Microservices">
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span class="category">Advanced</span>
+                            <span class="reading-time">25 min read</span>
+                        </div>
+                        <h3><a href="blog/microservices.html">Building Microservices with Node.js</a></h3>
+                        <div class="excerpt">Learn to build microservices architecture with Node.js. Cover service design, communication patterns, deployment, and best practices.</div>
+                        <div class="blog-footer">
+                            <span class="author">Microservices Expert</span>
+                            <span class="views">980 views</span>
+                        </div>
+                        <a href="blog/microservices.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="advanced">
+                    <img src="images/security-course.svg" alt="Node.js Authentication">
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span class="category">Advanced</span>
+                            <span class="reading-time">20 min read</span>
+                        </div>
+                        <h3><a href="blog/authentication.html">Node.js Authentication Guide</a></h3>
+                        <div class="excerpt">Complete guide to implementing authentication in Node.js applications. Learn about JWT, OAuth, password hashing, and security best practices.</div>
+                        <div class="blog-footer">
+                            <span class="author">Authentication Expert</span>
+                            <span class="views">1,100 views</span>
+                        </div>
+                        <a href="blog/authentication.html" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="container mt-3">
+            <div class="card">
+                <h2>Popular Topics</h2>
+                <div class="course-grid">
+                    <div class="card">
+                        <h3><a href="blog/nodejs-basics.html">Node.js Fundamentals</a></h3>
+                        <p>Master the core concepts of Node.js including event loop, modules, and asynchronous programming.</p>
+                        <a href="blog/nodejs-basics.html" class="btn btn-outline">Read More</a>
+                    </div>
+                    <div class="card">
+                        <h3><a href="blog/express-tutorial.html">Express.js Framework</a></h3>
+                        <p>Learn to build robust web applications using Express.js, the most popular Node.js framework.</p>
+                        <a href="blog/express-tutorial.html" class="btn btn-outline">Read More</a>
+                    </div>
+                    <div class="card">
+                        <h3><a href="blog/mongodb-nodejs.html">MongoDB Integration</a></h3>
+                        <p>Discover how to integrate MongoDB with Node.js for efficient data management and storage.</p>
+                        <a href="blog/mongodb-nodejs.html" class="btn btn-outline">Read More</a>
+                    </div>
+                    <div class="card">
+                        <h3><a href="blog/rest-api-nodejs.html">REST API Development</a></h3>
+                        <p>Build scalable REST APIs using Node.js and follow industry best practices for API design.</p>
+                        <a href="blog/rest-api-nodejs.html" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Node.js Hub</h4>
+                    <p>Your comprehensive resource for learning Node.js development, from basics to advanced concepts. All tutorials are completely free.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="courses.html">All Courses</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Popular Topics</h4>
+                    <ul>
+                        <li><a href="blog/nodejs-basics.html">Node.js Basics</a></li>
+                        <li><a href="blog/express-tutorial.html">Express.js Tutorial</a></li>
+                        <li><a href="blog/mongodb-nodejs.html">MongoDB Guide</a></li>
+                        <li><a href="blog/rest-api-nodejs.html">REST API Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Node.js Learning Hub. All rights reserved. | Free tutorials for everyone</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+    <!-- Additional CSS for blog categories and meta -->
+    <style>
+        .blog-categories {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .category-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid #007bff;
+            background: white;
+            color: #007bff;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: #007bff;
+            color: white;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .category {
+            background: #007bff;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+        }
+
+        .reading-time {
+            color: #666;
+        }
+
+        .blog-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Hide blog cards based on category filter */
+        .blog-card.hidden {
+            display: none;
+        }
+    </style>
+
+    <script>
+        // Blog category filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const blogCards = document.querySelectorAll('.blog-card');
+
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    
+                    // Update active button
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter blog cards
+                    blogCards.forEach(card => {
+                        if (category === 'all') {
+                            card.classList.remove('hidden');
+                        } else {
+                            const cardCategory = card.dataset.category;
+                            if (cardCategory === category) {
+                                card.classList.remove('hidden');
+                            } else {
+                                card.classList.add('hidden');
+                            }
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Node.js Blog",
+        "description": "Latest Node.js tutorials, tips, and best practices",
+        "url": "https://nodejslearninghub.com/blog",
+        "blogPost": [
+            {
+                "@type": "BlogPosting",
+                "headline": "Node.js Fundamentals",
+                "url": "https://nodejslearninghub.com/blog/nodejs-basics.html"
+            },
+            {
+                "@type": "BlogPosting",
+                "headline": "Express.js Tutorial",
+                "url": "https://nodejslearninghub.com/blog/express-tutorial.html"
+            }
+        ]
+    }
+    </script>
+</body>
+</html>
