@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="blogGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#blogGrad)"/>
+  <text x="400" y="180" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="white" text-anchor="middle">Node.js Tutorial</text>
+  <text x="400" y="220" font-family="Arial, sans-serif" font-size="18" fill="white" text-anchor="middle">Complete Learning Guide</text>
+  <rect x="100" y="80" width="120" height="80" fill="white" opacity="0.1" rx="10"/>
+  <rect x="580" y="280" width="120" height="80" fill="white" opacity="0.1" rx="10"/>
+  <circle cx="150" cy="120" r="30" fill="white" opacity="0.2"/>
+  <circle cx="650" cy="320" r="25" fill="white" opacity="0.2"/>
+</svg>
