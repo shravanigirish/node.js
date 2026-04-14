@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js Courses - Comprehensive Tutorials & Training | Node.js Learning Hub</title>
+    <meta name="description" content="Explore our comprehensive Node.js courses covering beginner to advanced topics. Learn Express.js, MongoDB, REST APIs, and more with hands-on projects.">
+    <meta name="keywords" content="Node.js courses, Node.js tutorial, Express.js course, MongoDB tutorial, backend development, JavaScript courses">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourdomain.com/courses">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">Node.js Hub</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/courses" class="active">Courses</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Node.js..." aria-label="Search">
+                <button type="button" aria-label="Search">Search</button>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">Menu</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <div class="container">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><span>Courses</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <section class="container">
+            <div class="card">
+                <h1>Node.js Courses</h1>
+                <p class="lead">Master Node.js development with our comprehensive courses. From basics to advanced topics, we have everything you need to become a Node.js expert.</p>
+                
+                <!-- Course Filters -->
+                <div class="course-filters mb-2">
+                    <button class="btn btn-primary filter-btn active" data-filter="all">All Courses</button>
+                    <button class="btn btn-outline filter-btn" data-filter="beginner">Beginner</button>
+                    <button class="btn btn-outline filter-btn" data-filter="intermediate">Intermediate</button>
+                    <button class="btn btn-outline filter-btn" data-filter="advanced">Advanced</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="course-grid" id="courses-container">
+                <div class="spinner"></div>
+            </div>
+        </section>
+
+        <section class="container mt-3">
+            <div class="card">
+                <h2>Why Choose Our Node.js Courses?</h2>
+                <div class="course-grid">
+                    <div class="card">
+                        <h3>Expert Instructors</h3>
+                        <p>Learn from industry professionals with real-world Node.js experience.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Hands-on Projects</h3>
+                        <p>Build real applications while learning with practical, project-based courses.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Lifetime Access</h3>
+                        <p>Get lifetime access to course materials and updates.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Certificate of Completion</h3>
+                        <p>Earn certificates to showcase your Node.js skills to employers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Node.js Hub</h4>
+                    <p>Your comprehensive resource for learning Node.js development, from basics to advanced concepts.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/courses">All Courses</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Popular Topics</h4>
+                    <ul>
+                        <li><a href="/blog/nodejs-basics">Node.js Basics</a></li>
+                        <li><a href="/blog/express-tutorial">Express.js Tutorial</a></li>
+                        <li><a href="/blog/mongodb-guide">MongoDB Guide</a></li>
+                        <li><a href="/blog/rest-api">REST API Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Node.js Learning Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/js/main.js"></script>
+    <script>
+        let allCourses = [];
+        let currentFilter = 'all';
+
+        // Load all courses
+        async function loadCourses() {
+            try {
+                const response = await fetch('/api/courses');
+                allCourses = await response.json();
+                displayCourses(allCourses);
+            } catch (error) {
+                console.error('Error loading courses:', error);
+                document.getElementById('courses-container').innerHTML = '<p>Error loading courses. Please try again later.</p>';
+            }
+        }
+
+        // Display courses
+        function displayCourses(courses) {
+            const container = document.getElementById('courses-container');
+            
+            if (courses.length === 0) {
+                container.innerHTML = '<p>No courses found matching your criteria.</p>';
+                return;
+            }
+
+            container.innerHTML = courses.map(course => `
+                <div class="course-card" data-level="${course.level}">
+                    <img src="${course.thumbnail}" alt="${course.title}" loading="lazy">
+                    <div class="course-card-content">
+                        <h3>${course.title}</h3>
+                        <div class="meta">
+                            <span class="level-badge level-${course.level}">${course.level}</span> | 
+                            ${course.duration} | 
+                            ${course.modules ? course.modules.length : 0} modules
+                        </div>
+                        <p>${course.description}</p>
+                        <div class="course-stats">
+                            <span class="rating">Rating: ${course.rating || '4.5'} / 5</span>
+                            <span class="enrolled">${course.enrolled || 0} enrolled</span>
+                        </div>
+                        <div class="price">$${course.price}</div>
+                        <button class="btn btn-success" data-course-id="${course._id}" onclick="enrollCourse('${course._id}')">
+                            Enroll Now
+                        </button>
+                        <a href="/courses/${course.slug}" class="btn btn-outline">View Details</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter courses
+        function filterCourses(level) {
+            currentFilter = level;
+            const filteredCourses = level === 'all' 
+                ? allCourses 
+                : allCourses.filter(course => course.level === level);
+            displayCourses(filteredCourses);
+
+            // Update active filter button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.filter === level) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize filter buttons
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCourses();
+
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterCourses(btn.dataset.filter);
+                });
+            });
+        });
+
+        // Add CSS for course filters and stats
+        const additionalStyles = document.createElement('style');
+        additionalStyles.textContent = `
+            .course-filters {
+                display: flex;
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin: 2rem 0;
+            }
+
+            .filter-btn {
+                padding: 0.5rem 1rem;
+                border: 2px solid #007bff;
+                background: white;
+                color: #007bff;
+                border-radius: 25px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .filter-btn:hover,
+            .filter-btn.active {
+                background: #007bff;
+                color: white;
+            }
+
+            .btn-outline {
+                background: transparent;
+                border: 2px solid #007bff;
+                color: #007bff;
+                margin-left: 0.5rem;
+            }
+
+            .btn-outline:hover {
+                background: #007bff;
+                color: white;
+            }
+
+            .level-badge {
+                padding: 0.25rem 0.5rem;
+                border-radius: 3px;
+                font-size: 0.8rem;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            .level-beginner {
+                background: #28a745;
+                color: white;
+            }
+
+            .level-intermediate {
+                background: #ffc107;
+                color: #333;
+            }
+
+            .level-advanced {
+                background: #dc3545;
+                color: white;
+            }
+
+            .course-stats {
+                display: flex;
+                justify-content: space-between;
+                margin: 1rem 0;
+                font-size: 0.9rem;
+                color: #666;
+            }
+
+            .course-card-content .btn {
+                margin-top: 0.5rem;
+            }
+        `;
+        document.head.appendChild(additionalStyles);
+    </script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Node.js Courses",
+        "description": "Explore our comprehensive Node.js courses covering beginner to advanced topics",
+        "url": "https://yourdomain.com/courses",
+        "mainEntity": {
+            "@type": "ItemList",
+            "itemListElement": [
+                {
+                    "@type": "Course",
+                    "name": "Node.js Fundamentals",
+                    "description": "Learn the basics of Node.js development"
+                },
+                {
+                    "@type": "Course", 
+                    "name": "Express.js Masterclass",
+                    "description": "Master Express.js framework for web development"
+                }
+            ]
+        }
+    }
+    </script>
+</body>
+</html>

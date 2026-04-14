@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Node.js Learning Hub - Get in Touch with Our Team</title>
+    <meta name="description" content="Contact Node.js Learning Hub for questions about our courses, partnerships, or technical support. Our team is here to help you succeed in your Node.js journey.">
+    <meta name="keywords" content="contact Node.js Hub, support, help, questions, partnerships, technical support">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourdomain.com/contact">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">Node.js Hub</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/courses">Courses</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/contact" class="active">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Node.js..." aria-label="Search">
+                <button type="button" aria-label="Search">Search</button>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">Menu</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <div class="container">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><span>Contact</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <section class="container">
+            <div class="card">
+                <h1>Contact Us</h1>
+                <p class="lead">Have questions about our Node.js courses or need technical support? We're here to help! Get in touch with our team and we'll respond as soon as possible.</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="course-grid">
+                <div class="card">
+                    <h2>Send us a Message</h2>
+                    <form id="contact-form" onsubmit="submitContactForm(event)">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject">
+                                <option value="">Select a subject</option>
+                                <option value="course-question">Course Question</option>
+                                <option value="technical-support">Technical Support</option>
+                                <option value="partnership">Partnership Inquiry</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" required rows="5" placeholder="Tell us more about your question or inquiry..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h2>Other Ways to Reach Us</h2>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <h3>Email Support</h3>
+                            <p>support@nodejshub.com</p>
+                            <p>Response time: 24-48 hours</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <h3>Community Forum</h3>
+                            <p>Join our Discord community for instant help from fellow learners and instructors.</p>
+                            <a href="#" class="btn btn-outline">Join Discord</a>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <h3>Office Hours</h3>
+                            <p>Monday - Friday: 9:00 AM - 5:00 PM EST</p>
+                            <p>Saturday - Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container mt-3">
+            <div class="card">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-section">
+                    <div class="faq-item">
+                        <h3>How do I enroll in a course?</h3>
+                        <p>Simply browse our courses page, select the course you're interested in, and click the "Enroll Now" button. You'll be guided through the enrollment process.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>Do you offer refunds?</h3>
+                        <p>Yes, we offer a 30-day money-back guarantee for all courses. If you're not satisfied, contact us within 30 days for a full refund.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>Can I access courses offline?</h3>
+                        <p>Currently, courses require an internet connection. However, you can download course materials for offline viewing.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>Do you provide certificates?</h3>
+                        <p>Yes, upon successful completion of any course, you'll receive a certificate of completion that you can add to your resume or LinkedIn profile.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container mt-3">
+            <div class="card text-center">
+                <h2>Ready to Start Learning Node.js?</h2>
+                <p>Browse our comprehensive courses and take the first step towards becoming a Node.js expert.</p>
+                <a href="/courses" class="btn btn-primary">Browse Courses</a>
+                <a href="/blog" class="btn btn-success">Read Our Blog</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Node.js Hub</h4>
+                    <p>Your comprehensive resource for learning Node.js development, from basics to advanced concepts.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/courses">All Courses</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Popular Topics</h4>
+                    <ul>
+                        <li><a href="/blog/nodejs-basics">Node.js Basics</a></li>
+                        <li><a href="/blog/express-tutorial">Express.js Tutorial</a></li>
+                        <li><a href="/blog/mongodb-guide">MongoDB Guide</a></li>
+                        <li><a href="/blog/rest-api">REST API Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Node.js Learning Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/js/main.js"></script>
+
+    <!-- Additional CSS for contact page -->
+    <style>
+        .contact-info {
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-section {
+            margin-top: 1rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .faq-item h3 {
+            color: #007bff;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-item p {
+            margin: 0;
+            color: #666;
+        }
+
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            background: white;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+    </style>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact Node.js Learning Hub",
+        "description": "Contact Node.js Learning Hub for questions about our courses and support",
+        "url": "https://yourdomain.com/contact",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Node.js Learning Hub",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "support@nodejshub.com",
+                "contactType": "customer service"
+            }
+        }
+    }
+    </script>
+</body>
+</html>

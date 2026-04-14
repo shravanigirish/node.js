@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js Blog - Latest Tutorials, Tips & Best Practices | Node.js Learning Hub</title>
+    <meta name="description" content="Stay updated with the latest Node.js tutorials, best practices, and tips. Learn from expert developers and enhance your Node.js skills.">
+    <meta name="keywords" content="Node.js blog, Node.js tutorials, JavaScript tips, backend development, Express.js, MongoDB">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourdomain.com/blog">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">Node.js Hub</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/courses">Courses</a></li>
+                <li><a href="/blog" class="active">Blog</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Node.js..." aria-label="Search">
+                <button type="button" aria-label="Search">Search</button>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">Menu</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <div class="container">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><span>Blog</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <section class="container">
+            <div class="card">
+                <h1>Node.js Blog</h1>
+                <p class="lead">Discover the latest Node.js tutorials, best practices, and insights from our expert instructors. Stay ahead in your Node.js journey with our comprehensive blog posts.</p>
+                
+                <!-- Blog Categories -->
+                <div class="blog-categories mb-2">
+                    <button class="btn btn-primary category-btn active" data-category="all">All Posts</button>
+                    <button class="btn btn-outline category-btn" data-category="basics">Basics</button>
+                    <button class="btn btn-outline category-btn" data-category="express">Express.js</button>
+                    <button class="btn btn-outline category-btn" data-category="database">Database</button>
+                    <button class="btn btn-outline category-btn" data-category="advanced">Advanced</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="blog-grid" id="blog-container">
+                <div class="spinner"></div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination" id="pagination">
+                <!-- Pagination will be generated dynamically -->
+            </div>
+        </section>
+
+        <section class="container mt-3">
+            <div class="card">
+                <h2>Popular Topics</h2>
+                <div class="course-grid">
+                    <div class="card">
+                        <h3>Node.js Fundamentals</h3>
+                        <p>Master the core concepts of Node.js including event loop, modules, and asynchronous programming.</p>
+                        <a href="/blog/nodejs-basics" class="btn btn-outline">Read More</a>
+                    </div>
+                    <div class="card">
+                        <h3>Express.js Framework</h3>
+                        <p>Learn to build robust web applications using Express.js, the most popular Node.js framework.</p>
+                        <a href="/blog/express-tutorial" class="btn btn-outline">Read More</a>
+                    </div>
+                    <div class="card">
+                        <h3>MongoDB Integration</h3>
+                        <p>Discover how to integrate MongoDB with Node.js for efficient data management.</p>
+                        <a href="/blog/mongodb-guide" class="btn btn-outline">Read More</a>
+                    </div>
+                    <div class="card">
+                        <h3>REST API Development</h3>
+                        <p>Build scalable REST APIs using Node.js and follow industry best practices.</p>
+                        <a href="/blog/rest-api" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Node.js Hub</h4>
+                    <p>Your comprehensive resource for learning Node.js development, from basics to advanced concepts.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/courses">All Courses</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Popular Topics</h4>
+                    <ul>
+                        <li><a href="/blog/nodejs-basics">Node.js Basics</a></li>
+                        <li><a href="/blog/express-tutorial">Express.js Tutorial</a></li>
+                        <li><a href="/blog/mongodb-guide">MongoDB Guide</a></li>
+                        <li><a href="/blog/rest-api">REST API Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Node.js Learning Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/js/main.js"></script>
+    <script>
+        let allBlogs = [];
+        let currentPage = 1;
+        const blogsPerPage = 9;
+        let currentCategory = 'all';
+
+        // Load blog posts
+        async function loadBlogs(page = 1, category = 'all') {
+            try {
+                const response = await fetch(`/api/blogs?page=${page}&limit=${blogsPerPage}`);
+                const data = await response.json();
+                
+                allBlogs = data.blogs;
+                displayBlogs(allBlogs);
+                displayPagination(data.pagination);
+            } catch (error) {
+                console.error('Error loading blogs:', error);
+                document.getElementById('blog-container').innerHTML = '<p>Error loading blog posts. Please try again later.</p>';
+            }
+        }
+
+        // Display blog posts
+        function displayBlogs(blogs) {
+            const container = document.getElementById('blog-container');
+            
+            if (blogs.length === 0) {
+                container.innerHTML = '<p>No blog posts found.</p>';
+                return;
+            }
+
+            container.innerHTML = blogs.map(blog => `
+                <article class="blog-card">
+                    <img src="${blog.thumbnail}" alt="${blog.title}" loading="lazy">
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span class="category">${blog.category}</span>
+                            <span class="reading-time">${blog.readingTime} min read</span>
+                        </div>
+                        <h3>${blog.title}</h3>
+                        <div class="excerpt">${blog.excerpt}</div>
+                        <div class="blog-footer">
+                            <span class="author">${blog.author}</span>
+                            <span class="views">${blog.views} views</span>
+                        </div>
+                        <a href="/blog/${blog.slug}" class="btn btn-primary mt-1">Read More</a>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // Display pagination
+        function displayPagination(pagination) {
+            const container = document.getElementById('pagination');
+            
+            if (pagination.pages <= 1) {
+                container.innerHTML = '';
+                return;
+            }
+
+            let paginationHTML = '';
+            
+            // Previous button
+            if (pagination.current > 1) {
+                paginationHTML += `<a href="#" onclick="loadBlogs(${pagination.current - 1}, '${currentCategory}'); return false;">Previous</a>`;
+            }
+            
+            // Page numbers
+            for (let i = 1; i <= pagination.pages; i++) {
+                const activeClass = i === pagination.current ? 'active' : '';
+                paginationHTML += `<a href="#" class="${activeClass}" onclick="loadBlogs(${i}, '${currentCategory}'); return false;">${i}</a>`;
+            }
+            
+            // Next button
+            if (pagination.current < pagination.pages) {
+                paginationHTML += `<a href="#" onclick="loadBlogs(${pagination.current + 1}, '${currentCategory}'); return false;">Next</a>`;
+            }
+            
+            container.innerHTML = paginationHTML;
+        }
+
+        // Filter by category
+        function filterByCategory(category) {
+            currentCategory = category;
+            currentPage = 1;
+            loadBlogs(currentPage, category);
+
+            // Update active category button
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.category === category) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadBlogs();
+
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterByCategory(btn.dataset.category);
+                });
+            });
+        });
+
+        // Add CSS for blog categories and meta
+        const additionalStyles = document.createElement('style');
+        additionalStyles.textContent = `
+            .blog-categories {
+                display: flex;
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin: 2rem 0;
+            }
+
+            .category-btn {
+                padding: 0.5rem 1rem;
+                border: 2px solid #007bff;
+                background: white;
+                color: #007bff;
+                border-radius: 25px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .category-btn:hover,
+            .category-btn.active {
+                background: #007bff;
+                color: white;
+            }
+
+            .blog-meta {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .category {
+                background: #007bff;
+                color: white;
+                padding: 0.25rem 0.5rem;
+                border-radius: 3px;
+                font-size: 0.8rem;
+            }
+
+            .reading-time {
+                color: #666;
+            }
+
+            .blog-footer {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 1rem;
+                font-size: 0.9rem;
+                color: #666;
+            }
+        `;
+        document.head.appendChild(additionalStyles);
+    </script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Node.js Blog",
+        "description": "Latest Node.js tutorials, tips, and best practices",
+        "url": "https://yourdomain.com/blog",
+        "blogPost": [
+            {
+                "@type": "BlogPosting",
+                "headline": "Node.js Fundamentals",
+                "url": "https://yourdomain.com/blog/nodejs-basics"
+            }
+        ]
+    }
+    </script>
+</body>
+</html>

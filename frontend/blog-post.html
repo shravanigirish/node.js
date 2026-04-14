@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Node.js Blog Post | Node.js Learning Hub</title>
+    <meta name="description" id="meta-description" content="Read our comprehensive Node.js tutorial and enhance your backend development skills.">
+    <meta name="keywords" id="meta-keywords" content="Node.js, JavaScript, backend development, tutorial">
+    
+    <!-- Dynamic canonical URL will be set by JavaScript -->
+    <link id="canonical-url" rel="canonical" href="">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">Node.js Hub</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/courses">Courses</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Node.js..." aria-label="Search">
+                <button type="button" aria-label="Search">Search</button>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">Menu</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <div class="container">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li id="breadcrumb-current">Post</li>
+                </ul>
+            </div>
+        </div>
+
+        <article class="container">
+            <div class="blog-post-content">
+                <header class="blog-header">
+                    <h1 id="blog-title">Loading...</h1>
+                    <div class="blog-meta">
+                        <span id="blog-category" class="category">Category</span>
+                        <span id="blog-author">Author</span>
+                        <span id="blog-date">Date</span>
+                        <span id="blog-reading-time">Reading time</span>
+                    </div>
+                    <div class="blog-stats">
+                        <span id="blog-views">0 views</span>
+                    </div>
+                </header>
+
+                <div class="blog-thumbnail">
+                    <img id="blog-image" src="/images/default-blog.jpg" alt="Blog post thumbnail" loading="lazy">
+                </div>
+
+                <div class="blog-content" id="blog-content">
+                    <div class="spinner"></div>
+                </div>
+
+                <div class="blog-tags" id="blog-tags">
+                    <!-- Tags will be populated dynamically -->
+                </div>
+
+                <div class="blog-navigation">
+                    <div class="related-posts">
+                        <h3>Related Posts</h3>
+                        <div id="related-posts-container">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-cta">
+                    <div class="card text-center">
+                        <h3>Want to learn more about Node.js?</h3>
+                        <p>Check out our comprehensive courses and take your Node.js skills to the next level.</p>
+                        <a href="/courses" class="btn btn-primary">Browse Courses</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Node.js Hub</h4>
+                    <p>Your comprehensive resource for learning Node.js development, from basics to advanced concepts.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/courses">All Courses</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Popular Topics</h4>
+                    <ul>
+                        <li><a href="/blog/nodejs-basics">Node.js Basics</a></li>
+                        <li><a href="/blog/express-tutorial">Express.js Tutorial</a></li>
+                        <li><a href="/blog/mongodb-guide">MongoDB Guide</a></li>
+                        <li><a href="/blog/rest-api">REST API Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Node.js Learning Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/js/main.js"></script>
+    <script>
+        // Get blog slug from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const blogSlug = window.location.pathname.split('/').pop() || urlParams.get('slug');
+
+        // Load blog post
+        async function loadBlogPost(slug) {
+            try {
+                const response = await fetch(`/api/blogs/${slug}`);
+                if (!response.ok) {
+                    throw new Error('Blog post not found');
+                }
+                
+                const blog = await response.json();
+                displayBlogPost(blog);
+                loadRelatedPosts(slug);
+                
+                // Update SEO meta tags
+                updateSEOMetaTags(blog);
+                
+            } catch (error) {
+                console.error('Error loading blog post:', error);
+                document.getElementById('blog-content').innerHTML = '<p>Blog post not found. <a href="/blog">Return to blog</a></p>';
+            }
+        }
+
+        // Display blog post
+        function displayBlogPost(blog) {
+            document.getElementById('page-title').textContent = blog.title;
+            document.getElementById('blog-title').textContent = blog.title;
+            document.getElementById('blog-category').textContent = blog.category;
+            document.getElementById('blog-author').textContent = `By ${blog.author}`;
+            document.getElementById('blog-date').textContent = new Date(blog.createdAt).toLocaleDateString();
+            document.getElementById('blog-reading-time').textContent = `${blog.readingTime} min read`;
+            document.getElementById('blog-views').textContent = `${blog.views} views`;
+            document.getElementById('blog-image').src = blog.thumbnail;
+            document.getElementById('blog-image').alt = blog.title;
+            document.getElementById('blog-content').innerHTML = blog.content;
+            document.getElementById('breadcrumb-current').textContent = blog.title;
+
+            // Display tags
+            const tagsContainer = document.getElementById('blog-tags');
+            if (blog.tags && blog.tags.length > 0) {
+                tagsContainer.innerHTML = `<h4>Tags:</h4><div class="tag-list">${blog.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>`;
+            }
+        }
+
+        // Load related posts
+        async function loadRelatedPosts(slug) {
+            try {
+                const response = await fetch(`/api/blogs/${slug}/related`);
+                const relatedPosts = await response.json();
+                
+                const container = document.getElementById('related-posts-container');
+                if (relatedPosts.length === 0) {
+                    container.innerHTML = '<p>No related posts found.</p>';
+                    return;
+                }
+
+                container.innerHTML = relatedPosts.map(post => `
+                    <div class="related-post-card">
+                        <h4><a href="/blog/${post.slug}">${post.title}</a></h4>
+                        <p>${post.excerpt}</p>
+                        <div class="related-post-meta">
+                            <span class="category">${post.category}</span>
+                            <span>${post.readingTime} min read</span>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading related posts:', error);
+                document.getElementById('related-posts-container').innerHTML = '<p>Error loading related posts.</p>';
+            }
+        }
+
+        // Update SEO meta tags
+        function updateSEOMetaTags(blog) {
+            document.getElementById('meta-description').content = blog.metaDescription;
+            document.getElementById('meta-keywords').content = blog.metaKeywords ? blog.metaKeywords.join(', ') : '';
+            document.getElementById('canonical-url').href = `${window.location.origin}/blog/${blog.slug}`;
+
+            // Update Open Graph meta tags
+            const ogTitle = document.createElement('meta');
+            ogTitle.property = 'og:title';
+            ogTitle.content = blog.title;
+            document.head.appendChild(ogTitle);
+
+            const ogDescription = document.createElement('meta');
+            ogDescription.property = 'og:description';
+            ogDescription.content = blog.metaDescription;
+            document.head.appendChild(ogDescription);
+
+            const ogImage = document.createElement('meta');
+            ogImage.property = 'og:image';
+            ogImage.content = blog.thumbnail;
+            document.head.appendChild(ogImage);
+
+            // Add structured data
+            const structuredData = document.createElement('script');
+            structuredData.type = 'application/ld+json';
+            structuredData.textContent = JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BlogPosting",
+                "headline": blog.title,
+                "description": blog.metaDescription,
+                "image": blog.thumbnail,
+                "author": {
+                    "@type": "Person",
+                    "name": blog.author
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Node.js Learning Hub"
+                },
+                "datePublished": blog.createdAt,
+                "dateModified": blog.updatedAt,
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": `${window.location.origin}/blog/${blog.slug}`
+                }
+            });
+            document.head.appendChild(structuredData);
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            if (blogSlug) {
+                loadBlogPost(blogSlug);
+            } else {
+                document.getElementById('blog-content').innerHTML = '<p>No blog post specified. <a href="/blog">Return to blog</a></p>';
+            }
+        });
+
+        // Add CSS for blog post styling
+        const additionalStyles = document.createElement('style');
+        additionalStyles.textContent = `
+            .blog-post-content {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+
+            .blog-header {
+                text-align: center;
+                margin-bottom: 2rem;
+                padding-bottom: 1rem;
+                border-bottom: 2px solid #eee;
+            }
+
+            .blog-header h1 {
+                font-size: 2.5rem;
+                color: #333;
+                margin-bottom: 1rem;
+            }
+
+            .blog-meta {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                flex-wrap: wrap;
+                margin-bottom: 1rem;
+                font-size: 0.9rem;
+                color: #666;
+            }
+
+            .blog-stats {
+                text-align: center;
+                color: #999;
+                font-size: 0.9rem;
+            }
+
+            .blog-thumbnail {
+                margin: 2rem 0;
+                text-align: center;
+            }
+
+            .blog-thumbnail img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+
+            .blog-content {
+                line-height: 1.8;
+                font-size: 1.1rem;
+                color: #333;
+            }
+
+            .blog-content h1, .blog-content h2, .blog-content h3 {
+                margin-top: 2rem;
+                margin-bottom: 1rem;
+                color: #333;
+            }
+
+            .blog-content h2 {
+                font-size: 1.8rem;
+                border-bottom: 2px solid #007bff;
+                padding-bottom: 0.5rem;
+            }
+
+            .blog-content h3 {
+                font-size: 1.4rem;
+            }
+
+            .blog-content p {
+                margin-bottom: 1.5rem;
+            }
+
+            .blog-content ul, .blog-content ol {
+                margin-bottom: 1.5rem;
+                padding-left: 2rem;
+            }
+
+            .blog-content li {
+                margin-bottom: 0.5rem;
+            }
+
+            .blog-content code {
+                background: #f4f4f4;
+                padding: 0.2rem 0.4rem;
+                border-radius: 3px;
+                font-family: 'Courier New', monospace;
+            }
+
+            .blog-content pre {
+                background: #f4f4f4;
+                padding: 1rem;
+                border-radius: 5px;
+                overflow-x: auto;
+                margin: 1.5rem 0;
+            }
+
+            .blog-content blockquote {
+                border-left: 4px solid #007bff;
+                padding-left: 1rem;
+                margin: 1.5rem 0;
+                font-style: italic;
+                color: #666;
+            }
+
+            .blog-tags {
+                margin: 2rem 0;
+                padding: 1rem;
+                background: #f8f9fa;
+                border-radius: 5px;
+            }
+
+            .tag-list {
+                display: flex;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                margin-top: 0.5rem;
+            }
+
+            .tag {
+                background: #007bff;
+                color: white;
+                padding: 0.25rem 0.5rem;
+                border-radius: 3px;
+                font-size: 0.8rem;
+            }
+
+            .blog-navigation {
+                margin: 3rem 0;
+            }
+
+            .related-posts {
+                margin-top: 2rem;
+            }
+
+            .related-posts h3 {
+                margin-bottom: 1.5rem;
+                color: #333;
+            }
+
+            .related-post-card {
+                background: white;
+                border: 1px solid #eee;
+                border-radius: 5px;
+                padding: 1rem;
+                margin-bottom: 1rem;
+                transition: transform 0.3s ease;
+            }
+
+            .related-post-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+
+            .related-post-card h4 {
+                margin-bottom: 0.5rem;
+            }
+
+            .related-post-card h4 a {
+                color: #007bff;
+                text-decoration: none;
+            }
+
+            .related-post-card h4 a:hover {
+                text-decoration: underline;
+            }
+
+            .related-post-meta {
+                display: flex;
+                gap: 1rem;
+                font-size: 0.9rem;
+                color: #666;
+                margin-top: 0.5rem;
+            }
+
+            .blog-cta {
+                margin: 3rem 0;
+            }
+
+            @media (max-width: 768px) {
+                .blog-header h1 {
+                    font-size: 2rem;
+                }
+
+                .blog-meta {
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 0.5rem;
+                }
+
+                .blog-content {
+                    font-size: 1rem;
+                }
+            }
+        `;
+        document.head.appendChild(additionalStyles);
+    </script>
+</body>
+</html>
