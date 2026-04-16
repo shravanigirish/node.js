@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js Basics: Getting Started Guide | Node.js Learning Hub</title>
+    <meta name="description" content="Learn Node.js fundamentals with this comprehensive guide. Discover how to install Node.js, understand the event loop, and build your first server. Perfect for beginners.">
+    <meta name="keywords" content="nodejs, javascript, backend, server-side, tutorial, beginner, event loop">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nodejslearninghub.com/blog/nodejs-basics.html">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="../index.html" class="logo">Node.js Hub</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../courses.html">Courses</a></li>
+                <li><a href="../blog.html" class="active">Blog</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Node.js tutorials..." aria-label="Search">
+                <button type="button" aria-label="Search">Search</button>
+            </div>
+            <div id="search-results"></div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">Menu</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <div class="container">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><span>Node.js Basics: Getting Started Guide</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <article class="container">
+            <div class="blog-post">
+                <h1>Node.js Basics: Getting Started Guide</h1>
+                
+                <div class="blog-meta">
+                    <span class="author">Node.js Expert</span>
+                    <span class="reading-time">8 min read</span>
+                    <span class="category">Basics</span>
+                    <span class="views">1,520 views</span>
+                </div>
+
+                <img src="../images/nodejs-course.svg" alt="Node.js Basics Tutorial Cover Image">
+
+                <h2>What is Node.js?</h2>
+                <p>Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. It allows you to run JavaScript on the server-side, opening up new possibilities for web development. Unlike traditional JavaScript that runs in browsers, Node.js enables JavaScript to execute on the server, making it possible to build scalable network applications.</p>
+
+                <h2>Why Use Node.js?</h2>
+                <p>Node.js has become incredibly popular for several reasons:</p>
+                <ul>
+                    <li><strong>Fast Performance:</strong> Built on V8 engine, Node.js offers excellent performance and speed</li>
+                    <li><strong>Single Language:</strong> Use JavaScript for both frontend and backend development</li>
+                    <li><strong>NPM Ecosystem:</strong> Access to npm, the largest package registry with millions of packages</li>
+                    <li><strong>Scalability:</strong> Perfect for building scalable applications with its event-driven architecture</li>
+                    <li><strong>Large Community:</strong> Active community providing endless resources and support</li>
+                </ul>
+
+                <h2>Installing Node.js</h2>
+                <p>Getting started with Node.js is straightforward. Follow these steps to install Node.js on your system:</p>
+                
+                <h3>Step 1: Download Node.js</h3>
+                <p>Visit the official Node.js website at <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> and download the LTS (Long Term Support) version for your operating system. The LTS version is recommended for most users as it provides stability and long-term support.</p>
+
+                <h3>Step 2: Install Node.js</h3>
+                <p>Run the installer and follow the installation wizard. The installer will automatically install both Node.js and npm (Node Package Manager).</p>
+
+                <h3>Step 3: Verify Installation</h3>
+                <p>Open your terminal or command prompt and run these commands to verify the installation:</p>
+                <pre><code># Check Node.js version
+node --version
+
+# Check npm version
+npm --version</code></pre>
+
+                <p>If you see version numbers displayed, Node.js is successfully installed on your system.</p>
+
+                <h2>Your First Node.js Program</h2>
+                <p>Let's create a simple "Hello World" program to verify everything is working correctly:</p>
+                
+                <h3>Step 1: Create a File</h3>
+                <p>Create a new file called <code>hello.js</code> and add the following code:</p>
+                <pre><code>// hello.js
+console.log('Hello, Node.js!');</code></pre>
+
+                <h3>Step 2: Run the Program</h3>
+                <p>Open your terminal, navigate to the directory where you saved the file, and run:</p>
+                <pre><code>node hello.js</code></pre>
+
+                <p>You should see "Hello, Node.js!" printed in your terminal. Congratulations! You've just run your first Node.js program.</p>
+
+                <h2>Understanding the Event Loop</h2>
+                <p>The event loop is one of the most important concepts in Node.js. It's what makes Node.js efficient and able to handle many concurrent connections with a single thread.</p>
+
+                <p>Here's how the event loop works:</p>
+                <ol>
+                    <li>Node.js takes the code you write and executes it</li>
+                    <li>When it encounters asynchronous operations (like file reading or network requests), it offloads them to the system</li>
+                    <li>When the asynchronous operation completes, it's added to a queue</li>
+                    <li>The event loop continuously checks this queue and executes the callbacks when the main thread is free</li>
+                </ol>
+
+                <h2>Creating Your First Server</h2>
+                <p>Let's create a simple HTTP server to understand how Node.js handles web requests:</p>
+                
+                <h3>Step 1: Import HTTP Module</h3>
+                <p>Create a file called <code>server.js</code> and add the following code:</p>
+                <pre><code>// Import the built-in HTTP module
+const http = require('http');</code></pre>
+
+                <h3>Step 2: Create the Server</h3>
+                <pre><code>// Create a server
+const server = http.createServer((req, res) => {
+    // Set the response HTTP header with HTTP status and content type
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    
+    // Send the response body "Hello, World!"
+    res.end('Hello, World!\n');
+});</code></pre>
+
+                <h3>Step 3: Start Listening</h3>
+                <pre><code>// The server listens on port 3000
+server.listen(3000, () => {
+    console.log('Server running at http://localhost:3000/');
+});</code></pre>
+
+                <h3>Step 4: Run Your Server</h3>
+                <pre><code>node server.js</code></pre>
+
+                <p>Now open your web browser and navigate to <code>http://localhost:3000</code>. You should see "Hello, World!" displayed in your browser.</p>
+
+                <h2>Understanding Modules</h2>
+                <p>Node.js uses a module system to organize code. Each file in Node.js is treated as a module. The <code>require()</code> function is used to import modules, and <code>module.exports</code> is used to export functionality from a module.</p>
+
+                <h3>Built-in Modules</h3>
+                <p>Node.js comes with several built-in modules:</p>
+                <ul>
+                    <li><code>http</code> - For creating HTTP servers and clients</li>
+                    <li><code>fs</code> - For working with the file system</li>
+                    <li><code>path</code> - For working with file and directory paths</li>
+                    <li><code>os</code> - For getting information about the operating system</li>
+                    <li><code>events</code> - For working with events</li>
+                </ul>
+
+                <h3>Creating Your Own Module</h3>
+                <p>Let's create a simple utility module:</p>
+                
+                <h4>Create the Module File</h4>
+                <p>Create a file called <code>utils.js</code>:</p>
+                <pre><code>// utils.js
+function greet(name) {
+    return `Hello, ${name}!`;
+}
+
+function add(a, b) {
+    return a + b;
+}
+
+// Export the functions
+module.exports = {
+    greet,
+    add
+};</code></pre>
+
+                <h4>Use the Module</h4>
+                <p>Create a file called <code>app.js</code>:</p>
+                <pre><code>// app.js
+const utils = require('./utils');
+
+console.log(utils.greet('Alice')); // Output: Hello, Alice!
+console.log(utils.add(5, 3));      // Output: 8</code></pre>
+
+                <h2>Working with NPM</h2>
+                <p>NPM (Node Package Manager) is the package manager for Node.js. It allows you to install and manage third-party packages and dependencies for your projects.</p>
+
+                <h3>Installing Packages</h3>
+                <p>To install a package, use the <code>npm install</code> command:</p>
+                <pre><code># Install a package locally
+npm install express
+
+# Install a package globally
+npm install -g nodemon
+
+# Install multiple packages
+npm install express mongoose cors</code></pre>
+
+                <h3>Package.json</h3>
+                <p>The <code>package.json</code> file is the heart of any Node.js project. It contains metadata about your project and lists dependencies:</p>
+                <pre><code>{
+  "name": "my-node-app",
+  "version": "1.0.0",
+  "description": "A simple Node.js application",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}</code></pre>
+
+                <h2>Asynchronous Programming</h2>
+                <p>Node.js is built around asynchronous programming. Understanding how to work with asynchronous code is crucial for Node.js development.</p>
+
+                <h3>Callbacks</h3>
+                <p>Callbacks are the traditional way to handle asynchronous operations in Node.js:</p>
+                <pre><code>const fs = require('fs');
+
+// Read a file asynchronously
+fs.readFile('example.txt', 'utf8', (err, data) => {
+    if (err) {
+        console.error('Error reading file:', err);
+        return;
+    }
+    console.log('File content:', data);
+});</code></pre>
+
+                <h3>Promises</h3>
+                <p>Promises provide a cleaner way to handle asynchronous operations:</p>
+                <pre><code>const fs = require('fs').promises;
+
+// Read a file using promises
+fs.readFile('example.txt', 'utf8')
+    .then(data => {
+        console.log('File content:', data);
+    })
+    .catch(err => {
+        console.error('Error reading file:', err);
+    });</code></pre>
+
+                <h3>Async/Await</h3>
+                <p>Async/await is the modern way to handle asynchronous operations, making code look synchronous:</p>
+                <pre><code>const fs = require('fs').promises;
+
+async function readFile() {
+    try {
+        const data = await fs.readFile('example.txt', 'utf8');
+        console.log('File content:', data);
+    } catch (err) {
+        console.error('Error reading file:', err);
+    }
+}
+
+readFile();</code></pre>
+
+                <h2>Next Steps</h2>
+                <p>Now that you understand the basics of Node.js, you can explore more advanced topics:</p>
+                <ul>
+                    <li><a href="express-tutorial.html">Learn Express.js framework</a></li>
+                    <li><a href="mongodb-nodejs.html">Work with databases</a></li>
+                    <li><a href="rest-api-nodejs.html">Build REST APIs</a></li>
+                    <li><a href="error-handling.html">Master error handling</a></li>
+                    <li><a href="testing-nodejs.html">Learn testing strategies</a></li>
+                </ul>
+
+                <h2>Conclusion</h2>
+                <p>Node.js opens up exciting possibilities for JavaScript developers. With its fast performance, extensive ecosystem, and active community, it's an excellent choice for building modern web applications. This guide covers the fundamentals you need to get started, but there's much more to explore as you continue your Node.js journey.</p>
+
+                <div class="related-posts">
+                    <h3>Related Posts</h3>
+                    <div class="course-grid">
+                        <div class="card">
+                            <h4><a href="express-tutorial.html">Express.js Tutorial for Beginners</a></h4>
+                            <p>Learn to build web applications with Express.js framework.</p>
+                        </div>
+                        <div class="card">
+                            <h4><a href="nodejs-modules.html">Node.js Modules Explained</a></h4>
+                            <p>Deep dive into CommonJS and ES modules in Node.js.</p>
+                        </div>
+                        <div class="card">
+                            <h4><a href="async-programming.html">Async Programming in Node.js</a></h4>
+                            <p>Master promises, async/await, and asynchronous patterns.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Node.js Hub</h4>
+                    <p>Your comprehensive resource for learning Node.js development, from basics to advanced concepts. All tutorials are completely free.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../courses.html">All Courses</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Popular Topics</h4>
+                    <ul>
+                        <li><a href="nodejs-basics.html">Node.js Basics</a></li>
+                        <li><a href="express-tutorial.html">Express.js Tutorial</a></li>
+                        <li><a href="mongodb-nodejs.html">MongoDB Guide</a></li>
+                        <li><a href="rest-api-nodejs.html">REST API Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Node.js Learning Hub. All rights reserved. | Free tutorials for everyone</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../script.js"></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Node.js Basics: Getting Started Guide",
+        "description": "Learn Node.js fundamentals with this comprehensive guide. Discover how to install Node.js, understand the event loop, and build your first server.",
+        "image": "../images/blog-header.svg",
+        "author": {
+            "@type": "Person",
+            "name": "Node.js Expert"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Node.js Learning Hub"
+        },
+        "datePublished": "2024-01-15",
+        "dateModified": "2024-01-15",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://nodejslearninghub.com/blog/nodejs-basics.html"
+        }
+    }
+    </script>
+</body>
+</html>

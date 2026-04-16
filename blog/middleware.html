@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Custom Middleware in Express.js | Node.js Learning Hub</title>
+    <meta name="description" content="Learn to create custom middleware in Express.js. Understand middleware types, error handling, and best practices for middleware development.">
+    <meta name="keywords" content="express, middleware, nodejs, web development, javascript, framework">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nodejslearninghub.com/blog/middleware.html">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="../index.html" class="logo">Node.js Hub</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../courses.html">Courses</a></li>
+                <li><a href="../blog.html" class="active">Blog</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Node.js tutorials..." aria-label="Search">
+                <button type="button" aria-label="Search">Search</button>
+            </div>
+            <div id="search-results"></div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">Menu</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <div class="container">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><span>Building Custom Middleware in Express.js</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <article class="container">
+            <div class="blog-post">
+                <h1>Building Custom Middleware in Express.js</h1>
+                
+                <div class="blog-meta">
+                    <span class="author">Middleware Expert</span>
+                    <span class="reading-time">11 min read</span>
+                    <span class="category">Framework</span>
+                    <span class="views">890 views</span>
+                </div>
+
+                <img src="../images/blog-header.svg" alt="Express.js Middleware Tutorial">
+
+                <h2>What is Middleware?</h2>
+                <p>Middleware functions are functions that have access to the request object (req), the response object (res), and the next function in the application's request-response cycle.</p>
+
+                <h2>Types of Middleware</h2>
+                <ul>
+                    <li><strong>Application-level:</strong> Bound to app instance using app.use()</li>
+                    <li><strong>Router-level:</strong> Bound to router instance using router.use()</li>
+                    <li><strong>Error-handling:</strong> Takes four arguments (err, req, res, next)</li>
+                    <li><strong>Built-in:</strong> Express built-in middleware like express.json()</li>
+                </ul>
+
+                <h2>Creating Custom Middleware</h2>
+                <pre><code>// Custom middleware
+const logger = (req, res, next) => {
+    console.log(`${req.method} ${req.url} - ${new Date().toISOString()}`);
+    next();
+};</code></pre>
+
+                <h2>Best Practices</h2>
+                <ul>
+                    <li>Always call next() or send a response</li>
+                    <li>Handle errors properly</li>
+                    <li>Keep middleware focused on a single responsibility</li>
+                    <li>Order middleware correctly</li>
+                </ul>
+
+                <h2>Conclusion</h2>
+                <p>Middleware is a powerful concept in Express.js that allows you to add functionality to your application in a modular way. Understanding how to create and use middleware is essential for building robust Express applications.</p>
+
+                <div class="related-posts">
+                    <h3>Related Posts</h3>
+                    <div class="course-grid">
+                        <div class="card">
+                            <h4><a href="express-tutorial.html">Express.js Tutorial</a></h4>
+                            <p>Learn Express.js fundamentals.</p>
+                        </div>
+                        <div class="card">
+                            <h4><a href="rest-api-nodejs.html">REST API Development</a></h4>
+                            <p>Build APIs with Express.</p>
+                        </div>
+                        <div class="card">
+                            <h4><a href="security.html">Security Best Practices</a></h4>
+                            <p>Secure your Express apps.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Node.js Hub</h4>
+                    <p>Your comprehensive resource for learning Node.js development, from basics to advanced concepts. All tutorials are completely free.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../courses.html">All Courses</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Popular Topics</h4>
+                    <ul>
+                        <li><a href="nodejs-basics.html">Node.js Basics</a></li>
+                        <li><a href="express-tutorial.html">Express.js Tutorial</a></li>
+                        <li><a href="mongodb-nodejs.html">MongoDB Guide</a></li>
+                        <li><a href="rest-api-nodejs.html">REST API Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Node.js Learning Hub. All rights reserved. | Free tutorials for everyone</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../script.js"></script>
+</body>
+</html>

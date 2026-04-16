@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js Authentication Guide | Node.js Learning Hub</title>
+    <meta name="description" content="Complete guide to implementing authentication in Node.js applications. Learn about JWT, OAuth, password hashing, and security best practices.">
+    <meta name="keywords" content="nodejs, authentication, jwt, oauth, security, password hashing, javascript">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nodejslearninghub.com/blog/authentication.html">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="../index.html" class="logo">Node.js Hub</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../courses.html">Courses</a></li>
+                <li><a href="../blog.html" class="active">Blog</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Node.js tutorials..." aria-label="Search">
+                <button type="button" aria-label="Search">Search</button>
+            </div>
+            <div id="search-results"></div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">Menu</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <div class="container">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><span>Node.js Authentication Guide</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <article class="container">
+            <div class="blog-post">
+                <h1>Node.js Authentication Guide</h1>
+                
+                <div class="blog-meta">
+                    <span class="author">Authentication Expert</span>
+                    <span class="reading-time">20 min read</span>
+                    <span class="category">Advanced</span>
+                    <span class="views">1,100 views</span>
+                </div>
+
+                <img src="../images/blog-header.svg" alt="Node.js Authentication Tutorial">
+
+                <h2>Understanding Authentication</h2>
+                <p>Authentication is the process of verifying the identity of a user, device, or system. It's a crucial security measure for protecting your applications and user data.</p>
+
+                <h2>Authentication Methods</h2>
+                <ul>
+                    <li><strong>Password-based:</strong> Traditional username/password authentication</li>
+                    <li><strong>Token-based:</strong> JWT (JSON Web Tokens) for stateless authentication</li>
+                    <li><strong>OAuth:</strong> Third-party authentication (Google, Facebook, etc.)</li>
+                    <li><strong>Session-based:</strong> Server-side session management</li>
+                </ul>
+
+                <h2>Password Security</h2>
+                <pre><code>const bcrypt = require('bcrypt');
+
+// Hash password
+const saltRounds = 10;
+const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+// Compare password
+const isValid = await bcrypt.compare(password, hashedPassword);</code></pre>
+
+                <h2>JWT Authentication</h2>
+                <pre><code>const jwt = require('jsonwebtoken');
+
+// Generate token
+const token = jwt.sign(
+    { userId: user.id, email: user.email },
+    process.env.JWT_SECRET,
+    { expiresIn: '24h' }
+);
+
+// Verify token
+const decoded = jwt.verify(token, process.env.JWT_SECRET);</code></pre>
+
+                <h2>Best Practices</h2>
+                <ul>
+                    <li>Always hash passwords with bcrypt</li>
+                    <li>Use HTTPS in production</li>
+                    <li>Implement rate limiting for authentication endpoints</li>
+                    <li>Use secure cookie settings for session tokens</li>
+                    <li>Implement proper logout functionality</li>
+                </ul>
+
+                <h2>Conclusion</h2>
+                <p>Implementing robust authentication is essential for securing your Node.js applications. By following these best practices and using the right tools, you can create secure authentication systems that protect your users and your application.</p>
+
+                <div class="related-posts">
+                    <h3>Related Posts</h3>
+                    <div class="course-grid">
+                        <div class="card">
+                            <h4><a href="security.html">Security Best Practices</a></h4>
+                            <p>Comprehensive security guide.</p>
+                        </div>
+                        <div class="card">
+                            <h4><a href="rest-api-nodejs.html">REST API Security</a></h4>
+                            <p>Secure your API endpoints.</p>
+                        </div>
+                        <div class="card">
+                            <h4><a href="best-practices.html">Production Best Practices</a></h4>
+                            <p>Build secure production apps.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Node.js Hub</h4>
+                    <p>Your comprehensive resource for learning Node.js development, from basics to advanced concepts. All tutorials are completely free.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../courses.html">All Courses</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Popular Topics</h4>
+                    <ul>
+                        <li><a href="nodejs-basics.html">Node.js Basics</a></li>
+                        <li><a href="express-tutorial.html">Express.js Tutorial</a></li>
+                        <li><a href="mongodb-nodejs.html">MongoDB Guide</a></li>
+                        <li><a href="rest-api-nodejs.html">REST API Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Node.js Learning Hub. All rights reserved. | Free tutorials for everyone</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../script.js"></script>
+</body>
+</html>

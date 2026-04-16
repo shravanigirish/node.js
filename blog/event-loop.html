@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding the Node.js Event Loop | Node.js Learning Hub</title>
+    <meta name="description" content="Deep dive into the Node.js event loop. Understand how Node.js handles asynchronous operations and achieves high performance with its single-threaded architecture.">
+    <meta name="keywords" content="nodejs, event loop, asynchronous, performance, single-threaded, non-blocking">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nodejslearninghub.com/blog/event-loop.html">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="../index.html" class="logo">Node.js Hub</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../courses.html">Courses</a></li>
+                <li><a href="../blog.html" class="active">Blog</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Node.js tutorials..." aria-label="Search">
+                <button type="button" aria-label="Search">Search</button>
+            </div>
+            <div id="search-results"></div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">Menu</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <div class="container">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><span>Understanding the Node.js Event Loop</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <article class="container">
+            <div class="blog-post">
+                <h1>Understanding the Node.js Event Loop</h1>
+                
+                <div class="blog-meta">
+                    <span class="author">Node.js Expert</span>
+                    <span class="reading-time">10 min read</span>
+                    <span class="category">Advanced</span>
+                    <span class="views">890 views</span>
+                </div>
+
+                <img src="../images/blog-header.svg" alt="Node.js Event Loop">
+
+                <h2>What is the Event Loop?</h2>
+                <p>The event loop is the core mechanism that enables Node.js to perform non-blocking I/O operations despite being single-threaded. It's what makes Node.js efficient and able to handle many concurrent connections with a single thread.</p>
+
+                <h2>How the Event Loop Works</h2>
+                <p>The event loop continuously checks the call stack and the task queue. When the call stack is empty, it takes the first event from the queue and pushes it to the call stack for execution.</p>
+
+                <h2>Phases of the Event Loop</h2>
+                <ul>
+                    <li><strong>Timers:</strong> Executes callbacks scheduled by setTimeout() and setInterval()</li>
+                    <li><strong>Pending Callbacks:</strong> Executes I/O callbacks deferred to the next loop iteration</li>
+                    <li><strong>Idle, Prepare:</strong> Only used internally</li>
+                    <li><strong>Poll:</strong> Retrieves new I/O events and executes their callbacks</li>
+                    <li><strong>Check:</strong> Executes callbacks registered by setImmediate()</li>
+                    <li><strong>Close Callbacks:</strong> Executes some close callbacks</li>
+                </ul>
+
+                <h2>Practical Examples</h2>
+                <pre><code>console.log('Start');
+
+setTimeout(() => {
+    console.log('Timeout callback');
+}, 0);
+
+Promise.resolve().then(() => {
+    console.log('Promise callback');
+});
+
+console.log('End');
+
+// Output: Start, End, Promise callback, Timeout callback</code></pre>
+
+                <h2>Best Practices</h2>
+                <ul>
+                    <li>Avoid blocking operations in the event loop</li>
+                    <li>Use worker threads for CPU-intensive tasks</li>
+                    <li>Understand the difference between microtasks and macrotasks</li>
+                    <li>Use setImmediate() for I/O callbacks</li>
+                </ul>
+
+                <h2>Conclusion</h2>
+                <p>Understanding the event loop is crucial for writing efficient Node.js applications. It helps you avoid common pitfalls and optimize your code for better performance.</p>
+
+                <div class="related-posts">
+                    <h3>Related Posts</h3>
+                    <div class="course-grid">
+                        <div class="card">
+                            <h4><a href="nodejs-basics.html">Node.js Basics</a></h4>
+                            <p>Learn Node.js fundamentals.</p>
+                        </div>
+                        <div class="card">
+                            <h4><a href="async-programming.html">Async Programming</a></h4>
+                            <p>Master asynchronous patterns.</p>
+                        </div>
+                        <div class="card">
+                            <h4><a href="performance.html">Performance Optimization</a></h4>
+                            <p>Optimize your applications.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Node.js Hub</h4>
+                    <p>Your comprehensive resource for learning Node.js development, from basics to advanced concepts. All tutorials are completely free.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../courses.html">All Courses</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Popular Topics</h4>
+                    <ul>
+                        <li><a href="nodejs-basics.html">Node.js Basics</a></li>
+                        <li><a href="express-tutorial.html">Express.js Tutorial</a></li>
+                        <li><a href="mongodb-nodejs.html">MongoDB Guide</a></li>
+                        <li><a href="rest-api-nodejs.html">REST API Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Node.js Learning Hub. All rights reserved. | Free tutorials for everyone</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../script.js"></script>
+</body>
+</html>

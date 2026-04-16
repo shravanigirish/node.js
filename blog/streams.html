@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working with Streams in Node.js | Node.js Learning Hub</title>
+    <meta name="description" content="Master Node.js streams for efficient data processing. Learn about readable, writable, duplex, and transform streams.">
+    <meta name="keywords" content="nodejs, streams, data processing, file processing, javascript, performance">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nodejslearninghub.com/blog/streams.html">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="../index.html" class="logo">Node.js Hub</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../courses.html">Courses</a></li>
+                <li><a href="../blog.html" class="active">Blog</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Node.js tutorials..." aria-label="Search">
+                <button type="button" aria-label="Search">Search</button>
+            </div>
+            <div id="search-results"></div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">Menu</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <div class="container">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><span>Working with Streams in Node.js</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <article class="container">
+            <div class="blog-post">
+                <h1>Working with Streams in Node.js</h1>
+                
+                <div class="blog-meta">
+                    <span class="author">Streams Expert</span>
+                    <span class="reading-time">14 min read</span>
+                    <span class="category">Advanced</span>
+                    <span class="views">620 views</span>
+                </div>
+
+                <img src="../images/blog-header.svg" alt="Node.js Streams Tutorial">
+
+                <h2>What are Streams?</h2>
+                <p>Streams are objects that let you read data from a source or write data to a destination in a continuous fashion. They are essential for handling large amounts of data efficiently.</p>
+
+                <h2>Types of Streams</h2>
+                <ul>
+                    <li><strong>Readable:</strong> Streams from which data can be read</li>
+                    <li><strong>Writable:</strong> Streams to which data can be written</li>
+                    <li><strong>Duplex:</strong> Streams that are both Readable and Writable</li>
+                    <li><strong>Transform:</strong> Duplex streams that can modify data</li>
+                </ul>
+
+                <h2>Stream Events</h2>
+                <pre><code>// Readable stream events
+readableStream.on('data', (chunk) => {
+    console.log('Received chunk:', chunk);
+});
+
+readableStream.on('end', () => {
+    console.log('Stream ended');
+});
+
+readableStream.on('error', (error) => {
+    console.error('Stream error:', error);
+});</code></pre>
+
+                <h2>Best Practices</h2>
+                <ul>
+                    <li>Use streams for large files</li>
+                    <li>Handle backpressure properly</li>
+                    <li>Use pipe() for simple stream connections</li>
+                    <li>Always handle stream errors</li>
+                </ul>
+
+                <h2>Conclusion</h2>
+                <p>Streams are a powerful feature in Node.js for efficient data processing. Understanding streams is essential for building applications that handle large amounts of data without consuming excessive memory.</p>
+
+                <div class="related-posts">
+                    <h3>Related Posts</h3>
+                    <div class="course-grid">
+                        <div class="card">
+                            <h4><a href="file-system.html">File System Operations</a></h4>
+                            <p>Handle files with streams.</p>
+                        </div>
+                        <div class="card">
+                            <h4><a href="performance.html">Performance Optimization</a></h4>
+                            <p>Optimize with streams.</p>
+                        </div>
+                        <div class="card">
+                            <h4><a href="async-programming.html">Async Programming</a></h4>
+                            <p>Handle async stream operations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Node.js Hub</h4>
+                    <p>Your comprehensive resource for learning Node.js development, from basics to advanced concepts. All tutorials are completely free.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../courses.html">All Courses</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Popular Topics</h4>
+                    <ul>
+                        <li><a href="nodejs-basics.html">Node.js Basics</a></li>
+                        <li><a href="express-tutorial.html">Express.js Tutorial</a></li>
+                        <li><a href="mongodb-nodejs.html">MongoDB Guide</a></li>
+                        <li><a href="rest-api-nodejs.html">REST API Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Node.js Learning Hub. All rights reserved. | Free tutorials for everyone</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../script.js"></script>
+</body>
+</html>

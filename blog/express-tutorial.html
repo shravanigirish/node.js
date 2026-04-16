@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express.js Tutorial for Beginners | Node.js Learning Hub</title>
+    <meta name="description" content="Complete Express.js tutorial for beginners. Learn to build web applications, handle routing, middleware, templating, and create REST APIs with Express.">
+    <meta name="keywords" content="express, express.js, nodejs, web development, api, middleware, routing, tutorial">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nodejslearninghub.com/blog/express-tutorial.html">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="../index.html" class="logo">Node.js Hub</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../courses.html">Courses</a></li>
+                <li><a href="../blog.html" class="active">Blog</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Node.js tutorials..." aria-label="Search">
+                <button type="button" aria-label="Search">Search</button>
+            </div>
+            <div id="search-results"></div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">Menu</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <div class="container">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><span>Express.js Tutorial for Beginners</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <article class="container">
+            <div class="blog-post">
+                <h1>Express.js Tutorial for Beginners</h1>
+                
+                <div class="blog-meta">
+                    <span class="author">Express Expert</span>
+                    <span class="reading-time">12 min read</span>
+                    <span class="category">Framework</span>
+                    <span class="views">1,280 views</span>
+                </div>
+
+                <img src="../images/blog-header.svg" alt="Express.js Tutorial Cover Image">
+
+                <h2>What is Express.js?</h2>
+                <p>Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. It's the most popular Node.js framework and makes building web applications and APIs much easier than using Node's built-in HTTP module alone.</p>
+
+                <h2>Why Use Express.js?</h2>
+                <p>Express.js simplifies web development with Node.js by providing:</p>
+                <ul>
+                    <li><strong>Simplified Routing:</strong> Easy-to-use routing system for handling HTTP requests</li>
+                    <li><strong>Middleware Support:</strong> Modular components that can handle requests and responses</li>
+                    <li><strong>Template Engines:</strong> Support for dynamic HTML generation</li>
+                    <li><strong>Database Integration:</strong> Easy integration with various databases</li>
+                    <li><strong>Large Ecosystem:</strong> Extensive middleware and plugins available</li>
+                </ul>
+
+                <h2>Setting Up Express.js</h2>
+                
+                <h3>Step 1: Create a Project Directory</h3>
+                <pre><code>mkdir my-express-app
+cd my-express-app</code></pre>
+
+                <h3>Step 2: Initialize npm Project</h3>
+                <pre><code>npm init -y</code></pre>
+
+                <h3>Step 3: Install Express.js</h3>
+                <pre><code>npm install express</code></pre>
+
+                <h3>Step 4: Install Nodemon for Development</h3>
+                <pre><code>npm install --save-dev nodemon</code></pre>
+
+                <h3>Step 5: Update package.json Scripts</h3>
+                <pre><code>{
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  }
+}</code></pre>
+
+                <h2>Creating Your First Express App</h2>
+                <p>Create a file called <code>app.js</code> and add the following code:</p>
+                <pre><code>// Import Express
+const express = require('express');
+
+// Create an Express application
+const app = express();
+const port = 3000;
+
+// Define a route
+app.get('/', (req, res) => {
+    res.send('Hello, Express!');
+});
+
+// Start the server
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+});</code></pre>
+
+                <p>Run your application with:</p>
+                <pre><code>npm run dev</code></p>
+
+                <p>Visit <code>http://localhost:3000</code> in your browser to see your first Express app!</p>
+
+                <h2>Understanding Routing</h2>
+                <p>Routing refers to how an application's endpoints (URIs) respond to client requests. Express provides a simple and powerful routing system.</p>
+
+                <h3>Basic Routes</h3>
+                <pre><code>// GET route for homepage
+app.get('/', (req, res) => {
+    res.send('Welcome to the homepage!');
+});
+
+// GET route for about page
+app.get('/about', (req, res) => {
+    res.send('About us page');
+});
+
+// POST route for creating data
+app.post('/users', (req, res) => {
+    res.send('Creating a new user');
+});
+
+// PUT route for updating data
+app.put('/users/:id', (req, res) => {
+    res.send(`Updating user ${req.params.id}`);
+});
+
+// DELETE route for deleting data
+app.delete('/users/:id', (req, res) => {
+    res.send(`Deleting user ${req.params.id}`);
+});</code></pre>
+
+                <h3>Route Parameters</h3>
+                <p>Route parameters are named URL segments used to capture values. They can be accessed using <code>req.params</code>:</p>
+                <pre><code>// Route with parameter
+app.get('/users/:userId', (req, res) => {
+    const userId = req.params.userId;
+    res.send(`User ID: ${userId}`);
+});
+
+// Multiple parameters
+app.get('/users/:userId/posts/:postId', (req, res) => {
+    const { userId, postId } = req.params;
+    res.send(`User ${userId}, Post ${postId}`);
+});</code></pre>
+
+                <h3>Query Parameters</h3>
+                <p>Query parameters are key-value pairs in the URL after the question mark. They can be accessed using <code>req.query</code>:</p>
+                <pre><code>// URL: /search?q=nodejs&sort=popular
+app.get('/search', (req, res) => {
+    const { q, sort } = req.query;
+    res.send(`Searching for: ${q}, sorted by: ${sort}`);
+});</code></pre>
+
+                <h2>Middleware</h2>
+                <p>Middleware functions are functions that have access to the request object (req), the response object (res), and the next function in the application's request-response cycle.</p>
+
+                <h3>Application-Level Middleware</h3>
+                <pre><code>// Custom middleware
+const logger = (req, res, next) => {
+    console.log(`${req.method} ${req.url} - ${new Date().toISOString()}`);
+    next();
+};
+
+// Apply middleware to all routes
+app.use(logger);
+
+// Built-in middleware
+app.use(express.json()); // Parse JSON bodies
+app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies</code></pre>
+
+                <h3>Route-Specific Middleware</h3>
+                <pre><code>// Middleware for specific route
+app.use('/admin', (req, res, next) => {
+    console.log('Admin middleware');
+    next();
+});
+
+app.get('/admin/dashboard', (req, res) => {
+    res.send('Admin Dashboard');
+});</code></pre>
+
+                <h3>Error Handling Middleware</h3>
+                <pre><code>// Error handling middleware (must be last)
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});</code></pre>
+
+                <h2>Template Engines</h2>
+                <p>Express supports various template engines for generating dynamic HTML. Let's use EJS as an example:</p>
+
+                <h3>Install EJS</h3>
+                <pre><code>npm install ejs</code></pre>
+
+                <h3>Set Up View Engine</h3>
+                <pre><code>app.set('view engine', 'ejs');</code></pre>
+
+                <h3>Create Views Directory</h3>
+                <pre><code>mkdir views</code></pre>
+
+                <h3>Create a Template</h3>
+                <p>Create <code>views/index.ejs</code>:</p>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;&lt;%= heading %&gt;&lt;/h1&gt;
+    &lt;p&gt;&lt;%= message %&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                <h3>Render Template</h3>
+                <pre><code>app.get('/', (req, res) => {
+    res.render('index', {
+        title: 'My Express App',
+        heading: 'Welcome to Express.js',
+        message: 'This is a dynamic page!'
+    });
+});</code></pre>
+
+                <h2>Building a REST API</h2>
+                <p>Express is excellent for building REST APIs. Let's create a simple user management API:</p>
+
+                <h3>Mock Data</h3>
+                <pre><code>// Mock user data
+let users = [
+    { id: 1, name: 'John Doe', email: 'john@example.com' },
+    { id: 2, name: 'Jane Smith', email: 'jane@example.com' }
+];</code></pre>
+
+                <h3>API Routes</h3>
+                <pre><code>// GET all users
+app.get('/api/users', (req, res) => {
+    res.json(users);
+});
+
+// GET user by ID
+app.get('/api/users/:id', (req, res) => {
+    const user = users.find(u => u.id === parseInt(req.params.id));
+    if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+    }
+    res.json(user);
+});
+
+// POST new user
+app.post('/api/users', (req, res) => {
+    const newUser = {
+        id: users.length + 1,
+        name: req.body.name,
+        email: req.body.email
+    };
+    users.push(newUser);
+    res.status(201).json(newUser);
+});
+
+// PUT update user
+app.put('/api/users/:id', (req, res) => {
+    const user = users.find(u => u.id === parseInt(req.params.id));
+    if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+    }
+    
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    
+    res.json(user);
+});
+
+// DELETE user
+app.delete('/api/users/:id', (req, res) => {
+    const index = users.findIndex(u => u.id === parseInt(req.params.id));
+    if (index === -1) {
+        return res.status(404).json({ error: 'User not found' });
+    }
+    
+    users.splice(index, 1);
+    res.json({ message: 'User deleted successfully' });
+});</code></pre>
+
+                <h2>Static Files</h2>
+                <p>Express can serve static files like CSS, JavaScript, and images:</p>
+                <pre><code>// Serve static files from 'public' directory
+app.use(express.static('public'));
+
+// Now you can access files like:
+// http://localhost:3000/css/style.css
+// http://localhost:3000/js/script.js
+// http://localhost:3000/images/logo.png</code></pre>
+
+                <h2>Common Middleware Packages</h2>
+                <p>Here are some useful Express middleware packages:</p>
+
+                <h3>CORS</h3>
+                <pre><code>npm install cors
+
+const cors = require('cors');
+app.use(cors()); // Enable CORS for all routes</code></pre>
+
+                <h3>Morgan (HTTP Request Logger)</h3>
+                <pre><code>npm install morgan
+
+const morgan = require('morgan');
+app.use(morgan('combined')); // Log HTTP requests</code></pre>
+
+                <h3>Helmet (Security)</h3>
+                <pre><code>npm install helmet
+
+const helmet = require('helmet');
+app.use(helmet()); // Set security headers</code></pre>
+
+                <h2>Error Handling Best Practices</h3>
+                <pre><code>// 404 handler (must be after all other routes)
+app.use((req, res, next) => {
+    res.status(404).json({ error: 'Not Found' });
+});
+
+// Global error handler (must be last)
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    
+    // Don't leak error details in production
+    const message = process.env.NODE_ENV === 'production' 
+        ? 'Something went wrong!' 
+        : err.message;
+    
+    res.status(err.status || 500).json({
+        error: message,
+        ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
+    });
+});</code></pre>
+
+                <h2>Next Steps</h2>
+                <p>Now that you understand Express.js basics, you can explore:</p>
+                <ul>
+                    <li><a href="mongodb-nodejs.html">Database integration with MongoDB</a></li>
+                    <li><a href="authentication.html">User authentication and authorization</a></li>
+                    <li><a href="testing-nodejs.html">Testing Express applications</a></li>
+                    <li><a href="deployment.html">Deploying Express apps to production</a></li>
+                </ul>
+
+                <h2>Conclusion</h2>
+                <p>Express.js provides a solid foundation for building web applications and APIs with Node.js. Its minimal approach and extensive middleware ecosystem make it a popular choice among developers. Master these fundamentals and you'll be well on your way to building robust web applications.</p>
+
+                <div class="related-posts">
+                    <h3>Related Posts</h3>
+                    <div class="course-grid">
+                        <div class="card">
+                            <h4><a href="nodejs-basics.html">Node.js Basics: Getting Started</a></h4>
+                            <p>Learn the fundamentals of Node.js development.</p>
+                        </div>
+                        <div class="card">
+                            <h4><a href="rest-api-nodejs.html">Building REST APIs with Node.js</a></h4>
+                            <p>Comprehensive guide to REST API development.</p>
+                        </div>
+                        <div class="card">
+                            <h4><a href="middleware.html">Express.js Middleware Development</a></h4>
+                            <p>Deep dive into creating custom middleware.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Node.js Hub</h4>
+                    <p>Your comprehensive resource for learning Node.js development, from basics to advanced concepts. All tutorials are completely free.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../courses.html">All Courses</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Popular Topics</h4>
+                    <ul>
+                        <li><a href="nodejs-basics.html">Node.js Basics</a></li>
+                        <li><a href="express-tutorial.html">Express.js Tutorial</a></li>
+                        <li><a href="mongodb-nodejs.html">MongoDB Guide</a></li>
+                        <li><a href="rest-api-nodejs.html">REST API Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Node.js Learning Hub. All rights reserved. | Free tutorials for everyone</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../script.js"></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Express.js Tutorial for Beginners",
+        "description": "Complete Express.js tutorial for beginners. Learn to build web applications, handle routing, middleware, templating, and create REST APIs with Express.",
+        "image": "../images/blog-header.svg",
+        "author": {
+            "@type": "Person",
+            "name": "Express Expert"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Node.js Learning Hub"
+        },
+        "datePublished": "2024-01-16",
+        "dateModified": "2024-01-16",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://nodejslearninghub.com/blog/express-tutorial.html"
+        }
+    }
+    </script>
+</body>
+</html>

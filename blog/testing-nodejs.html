@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing Node.js Applications: Jest and Mocha | Node.js Learning Hub</title>
+    <meta name="description" content="Complete guide to testing Node.js applications. Learn about unit testing, integration testing, and frameworks like Jest and Mocha.">
+    <meta name="keywords" content="nodejs, testing, jest, mocha, unit testing, integration testing, tdd">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nodejslearninghub.com/blog/testing-nodejs.html">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="../index.html" class="logo">Node.js Hub</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../courses.html">Courses</a></li>
+                <li><a href="../blog.html" class="active">Blog</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Node.js tutorials..." aria-label="Search">
+                <button type="button" aria-label="Search">Search</button>
+            </div>
+            <div id="search-results"></div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">Menu</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <div class="container">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><span>Testing Node.js Applications: Jest and Mocha</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <article class="container">
+            <div class="blog-post">
+                <h1>Testing Node.js Applications: Jest and Mocha</h1>
+                
+                <div class="blog-meta">
+                    <span class="author">Testing Expert</span>
+                    <span class="reading-time">16 min read</span>
+                    <span class="category">Advanced</span>
+                    <span class="views">980 views</span>
+                </div>
+
+                <img src="../images/blog-header.svg" alt="Testing Node.js Applications">
+
+                <h2>Why Test Your Code?</h2>
+                <p>Testing ensures your code works as expected, prevents regressions, and improves code quality. It's an essential part of modern software development.</p>
+
+                <h2>Types of Testing</h2>
+                <ul>
+                    <li><strong>Unit Testing:</strong> Test individual functions or components</li>
+                    <li><strong>Integration Testing:</strong> Test how components work together</li>
+                    <li><strong>End-to-End Testing:</strong> Test the entire application flow</li>
+                </ul>
+
+                <h2>Setting Up Jest</h2>
+                <pre><code>npm install --save-dev jest</code></pre>
+
+                <h2>Setting Up Mocha</h2>
+                <pre><code>npm install --save-dev mocha chai</code></pre>
+
+                <h2>Best Practices</h2>
+                <ul>
+                    <li>Write tests before or alongside your code (TDD)</li>
+                    <li>Keep tests simple and focused</li>
+                    <li>Test edge cases and error conditions</li>
+                    <li>Maintain high test coverage</li>
+                </ul>
+
+                <h2>Conclusion</h2>
+                <p>Testing is crucial for building reliable Node.js applications. Choose the testing framework that fits your needs and make testing an integral part of your development process.</p>
+
+                <div class="related-posts">
+                    <h3>Related Posts</h3>
+                    <div class="course-grid">
+                        <div class="card">
+                            <h4><a href="best-practices.html">Best Practices</a></h4>
+                            <p>Production-ready code patterns.</p>
+                        </div>
+                        <div class="card">
+                            <h4><a href="rest-api-nodejs.html">REST API Testing</a></h4>
+                            <p>Test your API endpoints.</p>
+                        </div>
+                        <div class="card">
+                            <h4><a href="debugging.html">Debugging Node.js</a></h4>
+                            <p>Find and fix issues effectively.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Node.js Hub</h4>
+                    <p>Your comprehensive resource for learning Node.js development, from basics to advanced concepts. All tutorials are completely free.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../courses.html">All Courses</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Popular Topics</h4>
+                    <ul>
+                        <li><a href="nodejs-basics.html">Node.js Basics</a></li>
+                        <li><a href="express-tutorial.html">Express.js Tutorial</a></li>
+                        <li><a href="mongodb-nodejs.html">MongoDB Guide</a></li>
+                        <li><a href="rest-api-nodejs.html">REST API Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Node.js Learning Hub. All rights reserved. | Free tutorials for everyone</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../script.js"></script>
+</body>
+</html>

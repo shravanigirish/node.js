@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js Modules: Understanding CommonJS and ES Modules | Node.js Learning Hub</title>
+    <meta name="description" content="Complete guide to Node.js modules. Learn about CommonJS, ES modules, module creation, and best practices for modular development.">
+    <meta name="keywords" content="nodejs, modules, commonjs, es-modules, require, import, javascript">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nodejslearninghub.com/blog/nodejs-modules.html">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="../index.html" class="logo">Node.js Hub</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../courses.html">Courses</a></li>
+                <li><a href="../blog.html" class="active">Blog</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Node.js tutorials..." aria-label="Search">
+                <button type="button" aria-label="Search">Search</button>
+            </div>
+            <div id="search-results"></div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">Menu</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <div class="container">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><span>Node.js Modules: Understanding CommonJS and ES Modules</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <article class="container">
+            <div class="blog-post">
+                <h1>Node.js Modules: Understanding CommonJS and ES Modules</h1>
+                
+                <div class="blog-meta">
+                    <span class="author">Module Expert</span>
+                    <span class="reading-time">12 min read</span>
+                    <span class="category">Basics</span>
+                    <span class="views">750 views</span>
+                </div>
+
+                <img src="../images/blog-header.svg" alt="Node.js Modules Tutorial">
+
+                <h2>What are Modules?</h2>
+                <p>Modules are reusable pieces of code that help organize your application into manageable, maintainable pieces. Node.js has a powerful module system that allows you to break down your code into smaller, focused files.</p>
+
+                <h2>CommonJS vs ES Modules</h2>
+                <ul>
+                    <li><strong>CommonJS:</strong> The original module system in Node.js</li>
+                    <li><strong>ES Modules:</strong> The modern standard for JavaScript modules</li>
+                </ul>
+
+                <h2>CommonJS Modules</h2>
+                <pre><code>// math.js
+function add(a, b) {
+    return a + b;
+}
+
+function subtract(a, b) {
+    return a - b;
+}
+
+module.exports = {
+    add,
+    subtract
+};
+
+// app.js
+const { add, subtract } = require('./math');
+console.log(add(5, 3)); // 8</code></pre>
+
+                <h2>ES Modules</h2>
+                <pre><code>// math.mjs
+export function add(a, b) {
+    return a + b;
+}
+
+export function subtract(a, b) {
+    return a - b;
+}
+
+// app.mjs
+import { add, subtract } from './math.mjs';
+console.log(add(5, 3)); // 8</code></pre>
+
+                <h2>Best Practices</h2>
+                <ul>
+                    <li>Keep modules small and focused</li>
+                    <li>Use descriptive names</li>
+                    <li>Document your modules</li>
+                    <li>Avoid circular dependencies</li>
+                </ul>
+
+                <h2>Conclusion</h2>
+                <p>Understanding modules is essential for building scalable Node.js applications. Choose the module system that best fits your project requirements.</p>
+
+                <div class="related-posts">
+                    <h3>Related Posts</h3>
+                    <div class="course-grid">
+                        <div class="card">
+                            <h4><a href="nodejs-basics.html">Node.js Basics</a></h4>
+                            <p>Learn Node.js fundamentals.</p>
+                        </div>
+                        <div class="card">
+                            <h4><a href="async-programming.html">Async Programming</a></h4>
+                            <p>Master asynchronous patterns.</p>
+                        </div>
+                        <div class="card">
+                            <h4><a href="best-practices.html">Best Practices</a></h4>
+                            <p>Production-ready code patterns.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Node.js Hub</h4>
+                    <p>Your comprehensive resource for learning Node.js development, from basics to advanced concepts. All tutorials are completely free.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../courses.html">All Courses</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Popular Topics</h4>
+                    <ul>
+                        <li><a href="nodejs-basics.html">Node.js Basics</a></li>
+                        <li><a href="express-tutorial.html">Express.js Tutorial</a></li>
+                        <li><a href="mongodb-nodejs.html">MongoDB Guide</a></li>
+                        <li><a href="rest-api-nodejs.html">REST API Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Node.js Learning Hub. All rights reserved. | Free tutorials for everyone</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../script.js"></script>
+</body>
+</html>

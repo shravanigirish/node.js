@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File System Operations in Node.js | Node.js Learning Hub</title>
+    <meta name="description" content="Learn file system operations in Node.js. Cover reading, writing, file streams, directory operations, and best practices for file handling.">
+    <meta name="keywords" content="nodejs, file system, fs, file operations, streams, directory, io">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nodejslearninghub.com/blog/file-system.html">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="../index.html" class="logo">Node.js Hub</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../courses.html">Courses</a></li>
+                <li><a href="../blog.html" class="active">Blog</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Node.js tutorials..." aria-label="Search">
+                <button type="button" aria-label="Search">Search</button>
+            </div>
+            <div id="search-results"></div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">Menu</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <div class="container">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><span>File System Operations in Node.js</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <article class="container">
+            <div class="blog-post">
+                <h1>File System Operations in Node.js</h1>
+                
+                <div class="blog-meta">
+                    <span class="author">File System Expert</span>
+                    <span class="reading-time">16 min read</span>
+                    <span class="category">Basics</span>
+                    <span class="views">920 views</span>
+                </div>
+
+                <img src="../images/blog-header.svg" alt="File System Operations">
+
+                <h2>Introduction to File System Module</h2>
+                <p>The Node.js File System (fs) module provides an API for interacting with the file system. It supports both synchronous and asynchronous operations.</p>
+
+                <h2>Basic File Operations</h2>
+                
+                <h3>Reading Files</h3>
+                <pre><code>const fs = require('fs');
+
+// Asynchronous file reading
+fs.readFile('example.txt', 'utf8', (err, data) => {
+    if (err) {
+        console.error('Error reading file:', err);
+        return;
+    }
+    console.log('File content:', data);
+});
+
+// Synchronous file reading
+try {
+    const data = fs.readFileSync('example.txt', 'utf8');
+    console.log('File content:', data);
+} catch (err) {
+    console.error('Error reading file:', err);
+}</code></pre>
+
+                <h3>Writing Files</h3>
+                <pre><code>// Asynchronous writing
+fs.writeFile('output.txt', 'Hello, World!', 'utf8', (err) => {
+    if (err) console.error('Error writing file:', err);
+    else console.log('File written successfully');
+});
+
+// Appending to file
+fs.appendFile('output.txt', '\nAppended text', 'utf8', (err) => {
+    if (err) console.error('Error appending:', err);
+});</code></pre>
+
+                <h2>Working with Streams</h2>
+                <pre><code>// Reading large files with streams
+const readableStream = fs.createReadStream('large-file.txt');
+
+readableStream.on('data', (chunk) => {
+    console.log(`Received ${chunk.length} bytes of data`);
+});
+
+// Writing with streams
+const writableStream = fs.createWriteStream('output.txt');
+writableStream.write('First chunk\n');
+writableStream.end('Final chunk');</code></pre>
+
+                <h2>Directory Operations</h2>
+                <pre><code>// Creating directory
+fs.mkdir('new-directory', { recursive: true }, (err) => {
+    if (err) console.error('Error creating directory:', err);
+});
+
+// Reading directory contents
+fs.readdir('.', (err, files) => {
+    if (err) console.error('Error reading directory:', err);
+    else console.log('Directory contents:', files);
+});</code></pre>
+
+                <h2>Best Practices</h2>
+                <ul>
+                    <li>Use asynchronous operations for better performance</li>
+                    <li>Handle errors properly</li>
+                    <li>Use streams for large files</li>
+                    <li>Check file existence before operations</li>
+                </ul>
+
+                <h2>Conclusion</h2>
+                <p>The Node.js File System module provides comprehensive tools for working with files and directories. Understanding these operations is essential for building robust applications.</p>
+
+                <div class="related-posts">
+                    <h3>Related Posts</h3>
+                    <div class="course-grid">
+                        <div class="card">
+                            <h4><a href="nodejs-basics.html">Node.js Basics</a></h4>
+                            <p>Learn Node.js fundamentals.</p>
+                        </div>
+                        <div class="card">
+                            <h4><a href="streams.html">Node.js Streams</a></h4>
+                            <p>Master stream processing.</p>
+                        </div>
+                        <div class="card">
+                            <h4><a href="async-programming.html">Async Programming</a></h4>
+                            <p>Handle async file operations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Node.js Hub</h4>
+                    <p>Your comprehensive resource for learning Node.js development, from basics to advanced concepts. All tutorials are completely free.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../courses.html">All Courses</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Popular Topics</h4>
+                    <ul>
+                        <li><a href="nodejs-basics.html">Node.js Basics</a></li>
+                        <li><a href="express-tutorial.html">Express.js Tutorial</a></li>
+                        <li><a href="mongodb-nodejs.html">MongoDB Guide</a></li>
+                        <li><a href="rest-api-nodejs.html">REST API Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Node.js Learning Hub. All rights reserved. | Free tutorials for everyone</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../script.js"></script>
+</body>
+</html>
